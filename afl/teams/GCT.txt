@@ -1,0 +1,44 @@
+1 Andrew Mac
+2 Noble John
+3 Flanders Sam
+4 Walter Jed
+5 Davies Alex
+6 Sexton Alex
+7 Holman Nick
+8 Fiorini Brayden
+9 Ainsworth Ben
+10 Ballard Charlie
+11 Miller Touk
+12 Himmelberg Elliott
+14 Weller Lachie
+15 Anderson Noah
+16 Berry Tom
+17 Rioli Daniel
+18 Rowell Matt
+19 Humphrey Bailey
+20 Read Ethan
+21 Moyle Ned
+22 Long Ben
+23 Lemmens Sean
+24 Swallow David
+25 Collins Sam
+26 Graham Will
+27 Powell Wil
+28 Witts Jarrod
+29 Rogers Jake
+30 Lombard Leo
+31 Bell Cooper
+32 Uwland Bodhi
+33 Clohesy Sam (A)
+34 King Ben
+35 Budarick Connor
+36 Evans Zak (B)
+37 Knobel Max (A)
+38 Johnston Lloyd (A)
+39 Gulbin Lachlan (B)
+40 Jeffrey Joel
+41 Rosas Malcolm
+42 Eastham Asher (A)
+44 Jepson Ben (A)
+46 Graham Caleb 
+50 Farrar Jy
