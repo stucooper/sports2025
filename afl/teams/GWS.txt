@@ -1,0 +1,44 @@
+1 Thomas Harvey
+2 Jones Darcy
+3 Coniglio Stephen
+4 Greene Toby
+5 Cadman Aaron
+6 Whitfield Lachie
+7 Ash Lachie
+8 Ward Callan
+9 Angwin Ryan
+10 Wehr Jacob (A)
+11 Gothard Phoenix
+12 Green Tom
+13 Hannaford Oliver
+14 Bedford Toby
+15 Taylor Sam
+16 Daniels Brent
+17 Callaghan Finn
+18 Stone Conor
+19 Oliver Harrison
+20 Stringer Jake
+21 Aleer Leek
+22 Kelly Josh
+23 Hogan Jesse
+24 Rowston Harry
+25 Keeffe Lachie (A)
+26 Riccardi Jake
+27 Himmelberg Harry
+28 Ough Jack
+29 Angove Cody
+30 Leake James
+31 McMullin Toby
+32 Briggs Kieren
+33 O'Halloran Xavier
+34 Fahey Josh (A)
+35 Gruzewski Max
+36 Smith Logan
+37 Fonti Joe
+38 Delana Josaia (B)
+39 Idun Connor
+41 Madden Nick (A)
+42 Wardius Nathan (B)
+44 Buckley Jack
+45 Derksen Wade (A)
+46 Brown Callum
