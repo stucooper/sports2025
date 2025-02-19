@@ -1,0 +1,15 @@
+Each team's player list in increasing jersey number order.
+Jersey SURNAME GIVEN NAMES
+37 Goodes Adam
+
+sort -k2 SYD.txt will give an alphabetically ordered list of the club
+
+There are Category A and Category B "rookies" indicated by (A) and (B)
+The Category B rookies can only play to replace a long-term injured player.
+
+Jersey number will be increasing and unique across the file.
+
+If there are players with the same surname (brothers) then
+sort -k2 -k3 CAR.txt
+will sort the Camporeale brothers in order.
+
