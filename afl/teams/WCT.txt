@@ -1,0 +1,43 @@
+1 Ryan Liam
+2 Waterman Jake
+3 Baker Liam
+4 Sheed Dom
+5 Hunt Jayden
+6 Yeo Elliot
+7 Ginbey Reuben
+8 Hewett Elijah
+9 Reid Harley
+10 Brockman Tyler
+11 Kelly Tim
+12 Allen Oscar
+13 Long Noah
+14 Duggan Liam
+15 Cripps Jamie
+16 Owies Matt
+17 Graham Jack
+18 Chesser Campbell
+19 Hough Brady
+20 McGovern Jeremy
+21 Petruccelle Jack
+22 Reid Archer
+23 Maric Ryan
+24 Johnston Harvey
+25 Flynn Matt
+26 Allan Bo
+27 Gross Tom
+28 Cole Tom
+29 Hall Clay
+30 Barnett Harry
+31 Grego Lucca
+32 Williams Bailey
+33 Bazzo Rhett
+34 Williams Jack
+35 Shanahan Jobe
+36 Rawlinson Loch (A)
+37 Champion Malakai (B)
+38 Davis Hamish
+39 Livingstone Coen (B)
+40 Jamieson Callum
+42 Edwards Harry
+43 Dewar Tyrell (A)
+44 Hutchinson Jack (A)
