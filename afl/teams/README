@@ -10,6 +10,8 @@ The Category B rookies can only play to replace a long-term injured player.
 Jersey number will be increasing and unique across the file.
 
 If there are players with the same surname (brothers) then
-sort -k2 -k3 CAR.txt
-will sort the Camporeale brothers in order.
+some convoluted double sort might get their names in order.
+There are two Ashcrofts in Brisbane and two Camporeale brothers at
+Carlton and two Warners in Sydney, who take swings at each other in
+practice games.
 
