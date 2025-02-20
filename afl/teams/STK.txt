@@ -1,0 +1,44 @@
+1 Higgins Jack
+2 Windhager Marcus
+3 Jones Zak
+4 Collard Lance
+5 Travaglia Tonie
+6 Macrae Jack
+7 Wanganeen-Milera Nasiah
+8 Hill Bradley
+9 Steele Jack
+10 Owens Mitch
+11 Clark Hunter
+12 King Max
+13 Byrnes Ryan
+14 Stocker Liam
+15 Dow Paddy
+16 Butler Dan
+17 Keeler Isaac
+18 Carroll Jack
+19 Marshall Rowan
+20 Howard Dougal
+21 Cordy Zaine
+22 Wilson Darcy
+23 Henry Liam
+24 Hastie Angus
+35 Phillipou Mattaes
+26 Tauru Alix
+27 Schoenmaker Arie
+28 Barrat James
+29 Webster Jimmy
+30 Dodson Alex
+31 Boyd Harry
+32 Wood Mason
+33 Said Patrick
+34 Farcia Hugo
+35 Sinclair Jack
+38 Boxshall Hugh
+40 Hall Max (A)
+41 McLennan Angus (A)
+42 Heath Max
+43 Sharman Cooper
+44 Wilkie Callum
+45 O'Connell Liam (B)
+46 Armstrong Eamonn (B)
+47 Caminiti Anthony (A)
