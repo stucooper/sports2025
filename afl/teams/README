@@ -15,9 +15,19 @@ numbers. Some players were Category A rookies or even on the club's
 list anyhow so I'm assuming the jersey is correct and still marking
 them as SSP.
 
+afl.com.au:
+################
+The Eagles had a potential signing hijacked by Melbourne after Jack
+Henderson opted to join the Demons, remarkably just a day after
+playing in West Coast's match simulation against Richmond.
+################
+(Henderson was not in my list of WCT.txt players before and is a new
+SSP addition to MEL.txt)
+
 If ever there's a midseason draft with player changes this entire
 exercise of having players in text files will become very very
-tricky!
+tricky! There's a Mid-Season Rookie Draft if clubs have rooms on their
+list; Melbourne Demons are said to be one such club.
 
 Jersey number will be increasing and unique across the file.
 
