@@ -7,6 +7,18 @@ sort -k2 SYD.txt will give an alphabetically ordered list of the club
 There are Category A and Category B "rookies" indicated by (A) and (B)
 The Category B rookies can only play to replace a long-term injured player.
 
+On Tuesday 25th February 20250225 14 SSP Pre-Season Supplemental
+Selection Program players were announced. I don't know the Jersey
+numbers of some of these players yet so I'll put them in as
+100,101... for each club until I discover the correct Jersey
+numbers. Some players were Category A rookies or even on the club's
+list anyhow so I'm assuming the jersey is correct and still marking
+them as SSP.
+
+If ever there's a midseason draft with player changes this entire
+exercise of having players in text files will become very very
+tricky!
+
 Jersey number will be increasing and unique across the file.
 
 If there are players with the same surname (brothers) then

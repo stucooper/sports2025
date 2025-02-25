@@ -16,7 +16,7 @@
 16 Reid Murphy
 17 Brodie Will
 18 Reidy Liam (A)
-19 Narkle Quinton (A)
+19 Narkle Quinton (A) (SSP)
 20 Voss Patrick (A)
 21 McDonald Oscar
 22 Nicholls Charlie
@@ -41,3 +41,4 @@
 41 Banfield Bailey
 42 Riddle Adien (A)
 44 Johnson Matthew
+101 Dudley Isaiah (SSP)

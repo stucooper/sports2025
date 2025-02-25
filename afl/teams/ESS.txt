@@ -22,7 +22,7 @@
 22 Durham Sam
 23 Jones Harrison
 24 Bryan Nick
-25 Prior Jaxon (A)
+25 Prior Jaxon (A) (SSP)
 27 Redman Mason
 28 Duursma Xavier
 29 Menzie Jye (A)
@@ -40,3 +40,4 @@
 41 El-Hawli Saad (A)
 42 Nguyen Jayden (B)
 44 Day-Wicks Archer (A)
+100 Edwards Tom (SSP)
