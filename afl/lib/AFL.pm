@@ -10,4 +10,6 @@ package AFL;
     SYD WCT WBD
     );
 
+$TEAMCOUNT = 18;
+
 1;
