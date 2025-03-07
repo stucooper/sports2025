@@ -15,6 +15,11 @@ numbers. Some players were Category A rookies or even on the club's
 list anyhow so I'm assuming the jersey is correct and still marking
 them as SSP.
 
+grep 10[0-9] *.txt
+in this directory will show the 100,101.. players I still don't have
+numbers for; I tidied up the list from club websites on 20250307
+and now there's only four of them.
+
 afl.com.au:
 ################
 The Eagles had a potential signing hijacked by Melbourne after Jack
