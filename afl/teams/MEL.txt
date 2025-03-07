@@ -38,8 +38,8 @@
 39 Mentha Ricky (B)
 40 Woewodin Taj
 41 Brown Kynan (A)
-42 Kentfield Luker (A)
-43 Johnson Aidan
+42 Johnson Aidan
+43 Henderson Jack (SSP) 
+44 Kentfield Luker (A)
 45 Moniz-Wakefield Andy (A)
 100 Culley Jai (SSP)
-101 Henderson Jack (SSP)
