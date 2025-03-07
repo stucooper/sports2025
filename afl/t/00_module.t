@@ -10,13 +10,13 @@ use Test::More tests => 5;
 is(18, scalar(@AFL::Teams), '18 teams defined');
 is($AFL::TEAMCOUNT, scalar(@AFL::Teams), '$TEAMCOUNT varaiable correct');
 
-# check that there are $TEAMCOUNT *.txt files in teams
+# Test 4: check that there are $TEAMCOUNT *.txt files in teams
 my $teamsdir = "/home/scooper/sports2025/afl/teams";
 opendir(my $teamsdirfh, $teamsdir);
 my (@teamfiles) = grep{ /\.txt$/ && -f "$teamsdir/$_" } readdir ($teamsdirfh);
 is($AFL::TEAMCOUNT, scalar(@teamfiles), "$AFL::TEAMCOUNT .txt files found");
 
-# check that every team eg WCT has a /teams/WCT.txt file
+# Test 5: check that each team eg WCT has a /teams/WCT.txt file
 my $all_teams_present = 1;
 
 foreach my $team (@AFL::Teams) {
@@ -25,4 +25,4 @@ foreach my $team (@AFL::Teams) {
      $all_teams_present = 0;
   }
 }
-is($all_teams_present, 1, "All team files found");
+is($all_teams_present, 1, "All teams have a .txt file");
