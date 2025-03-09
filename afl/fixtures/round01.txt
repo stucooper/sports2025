@@ -1,0 +1,15 @@
+# AFL Round 02
+# Thursday 20250313
+RIC v CAR
+# Friday 20250314
+HAW v ESS
+# Satuday 20250315
+GEE v FRE
+SYD v BRI
+BUL v NOR
+COL v POR
+# Sunday 20250316
+ADE v STK
+MEL v GWS
+WCT v GCT
+
