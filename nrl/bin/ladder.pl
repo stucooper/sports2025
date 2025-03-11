@@ -12,7 +12,6 @@ my %byethisround = ();
 
 # can probably do the next foreach with a map but will foreach it for now
 foreach (@NRL::Teams) {
-    $byethisround{$_}    = 1;
     $ladder{$_}{played}  = 0;
     $ladder{$_}{wins}    = 0;
     $ladder{$_}{losses}  = 0;    
@@ -32,15 +31,10 @@ foreach my $file (@resultsfiles) {
     processResultFile($file);
 }
 
-foreach (keys %byethisround ) {
-    if ( $byethisround{$_} == 1 ) {
-	$ladder{$_}{byes}++;
-    }
-}
-
 my @ladderTeams = ladderPosition();
 foreach (@ladderTeams) {
-    print "$_\n";
+    # FIXME: print out a nice formatted sprintf line of ladder
+    print "$_ $ladder{$_}{diff} $ladder{$_}{byes}\n";
 }
 
 sub processResultFile {
@@ -50,12 +44,10 @@ sub processResultFile {
 	or die "cannot open $resultsdir/$file: $!\n";
     while (my $line = <$fh>) {
 	chomp($line);
-	print "found line $line\n";
+	# print "found line $line\n";
 
 	if ( $line =~ /\d{8}\s+(\w+)\s+(\d+)\s+(\w+)\s+(\d+)/ ) {
 	    my($home,$homePoints,$away,$awayPoints) = ($1,$2,$3,$4);
-	    $byethisround{$home} = 0;
-	    $byethisround{$away} = 0;
 	    $ladder{$home}{for}     += $homePoints;
 	    $ladder{$home}{against} += $awayPoints;
 	    $ladder{$away}{for}     += $awayPoints;
@@ -85,6 +77,21 @@ sub processResultFile {
 	    }
 
 	}
+
+	# Handle any BYE teams this round. I originally implemented this
+	# as assume every time has a bye and set their bye to 0 once
+	# I detect they've played this week, but then I thought of
+	# State of Origin and split rounds. So I've changed it that
+	# a team with a 2-point bye is explicitly mentioned in the
+	# results file with BYE: TEAM1 TEAM2 TEAM3
+
+	if ( $line =~ /BYES:\s+(.*)$/ ) {
+	    my @byeTeams = split /\s+/, $1;
+	    foreach (@byeTeams) {
+		$ladder{$_}{byes}++;
+	    }
+	}
+
     }
 }
 
