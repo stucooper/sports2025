@@ -98,7 +98,10 @@ sub ladderPosition {
 			                   ||
 			               $a cmp $b
     } @teams;
+    # High to low sort, the earlier you are in the @sorted array the better
+    # your ladder position. Most wins.. if wins are equal.. higher points diff
+    # if points diff are equal (which they were for 4 teams after round 1
+    # just do alphabetical prdering.
+
     return(@sorted);
-#    return qw(MEL BRI MAN CAN BUL PEN NEW SOU GCT WTI
-#	      RED CRO STG AUK NQL ROO PAR);
 }
