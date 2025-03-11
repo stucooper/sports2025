@@ -34,9 +34,13 @@ foreach my $file (@resultsfiles) {
 
 foreach (keys %byethisround ) {
     if ( $byethisround{$_} == 1 ) {
-	print "BYE: $_\n";
 	$ladder{$_}{byes}++;
     }
+}
+
+my @ladderTeams = ladderPosition();
+foreach (@ladderTeams) {
+    print "$_\n";
 }
 
 sub processResultFile {
@@ -82,4 +86,11 @@ sub processResultFile {
 
 	}
     }
+}
+
+sub ladderPosition {
+    # input: the %ladder hash
+    # output: an array of the team names from highest to lowest in the ladder
+    return qw(MEL BRI MAN CAN BUL PEN NEW SOU GCT WTI
+	      RED CRO STG AUK NQL ROO PAR);
 }
