@@ -91,6 +91,14 @@ sub processResultFile {
 sub ladderPosition {
     # input: the %ladder hash
     # output: an array of the team names from highest to lowest in the ladder
-    return qw(MEL BRI MAN CAN BUL PEN NEW SOU GCT WTI
-	      RED CRO STG AUK NQL ROO PAR);
+    my @teams = @NRL::Teams;
+    my @sorted = sort { $ladder{$b}{wins} <=> $ladder{$a}{wins}
+			                   ||
+			$ladder{$b}{diff} <=> $ladder{$a}{diff}
+			                   ||
+			               $a cmp $b
+    } @teams;
+    return(@sorted);
+#    return qw(MEL BRI MAN CAN BUL PEN NEW SOU GCT WTI
+#	      RED CRO STG AUK NQL ROO PAR);
 }
