@@ -54,6 +54,7 @@ sub processResultFile {
 
 	    # need ($tipFound == 0) as the first clause of the while
 	    # because if $tipFound == 1 we don't want to gobble the next tip
+            # Boolean short-circuit we don't do <$tipfh> if tipFound == 0
 	    while ( ($tipFound == 0) && defined(my $tipline = <$tipfh>) ) {
 		chomp($tipline);
 		if ($tipline =~ /^(\w{3})\s+[dD]\s+(\w{3})/) {
