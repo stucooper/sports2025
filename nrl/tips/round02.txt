@@ -1,0 +1,9 @@
+NEW d RED
+MAN d AUK
+PEN d ROO
+STG d SOU
+CRO d NQL
+BRI d CAN
+WTI d PAR
+BUL d GCT
+Knockout: PEN
