@@ -86,6 +86,11 @@ sub processResultFile {
 	}
     }
 
+    # FIXME: Add support for the margin feature of AFL tipping.
+    # In Round 00 I said Syd d Haw by 16, in the event Haw wom by 20
+    # so my margin score is 36 and gets added to each round. The lower
+    # your margin score, the better.
+
     close($fh);
     close($tipfh);
 }
