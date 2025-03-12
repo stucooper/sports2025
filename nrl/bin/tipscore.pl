@@ -85,6 +85,22 @@ sub processResultFile {
 
 	}
     }
+
+    # FIXME: The itipFooty comp I'm in has a "knockout comp" feature
+    # where you pick one side each round (but not the same team in
+    # consecutive rounds) that must win.. if your knockout side wins that
+    # round you're still alive in the knockout competition going into
+    # the next round. I could add support for that in this program
+    # it'd be a bit tricky because the knockout team is mentioned at the
+    # bottom of the tips file so I don't really know it in advance as
+    # I parse down the results file line by line
+
+    # I could have the knockout team at the top of the tips/ file without
+    # crippling the file format too much, but I consider the knockout comp
+    # itipFooty feature to be an adjunct to the main purpose of footy tipping
+    # so having the knockout team at the top of the file annoys me
+    # philosophically, it's just wrong.
+
     close($fh);
     close($tipfh);
 }
