@@ -34,7 +34,7 @@ foreach my $file (@resultsfiles) {
 }
 
 my @ladderTeams = ladderPosition();
-print "TEAM P W L D F A +-\n";
+print "TEAM  P  W  L  D   F    A   %\n";
 foreach (@ladderTeams) {
     my $p  = $ladder{$_}{played};
     my $w  = $ladder{$_}{wins};
@@ -45,8 +45,8 @@ foreach (@ladderTeams) {
     my $pct = 0; # club's percentage
     $pct = ($f/$a)*100.0 if ($a > 0);
     $pct = sprintf("%.1f", $pct); # to 1 decimal point
-    # FIXME: Nice formatted sprintf for the print below
-    print "$_ $p $w $l $d $f $a $pct\n";
+    #      TEAM  P  W  L  D   F    A   %\n";
+    printf("%3s  %2s %2s %2s  %1s %4s %4s $pct\n", $_, $p, $w, $l, $d, $f, $a);
 }
 
 sub processResultFile {
