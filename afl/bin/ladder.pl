@@ -95,10 +95,14 @@ sub processResultFile {
 	# Handle any BYE teams this round. I originally implemented this
 	# as assume every time has a bye and set their bye to 0 once
 	# I detect they've played this week, but then I thought of
-	# State of Origin and split rounds. So I've changed it that
-	# a team with a 2-point bye is explicitly mentioned in the
+	# split rounds. So I've changed it that a team with a bye is
+	# explicitly mentioned in the
 	# results file with BYE: TEAM1 TEAM2 TEAM3
 
+	# On further consideration BYES might not be such a thing in the AFL
+	# anyhow so if they don't affect the ladder in any way, I'll drop
+	# the code below. As it stands, I haven't put any BYES: lines in
+	# the results.txt AFL files so the below code doesn't execute.
 	if ( $line =~ /BYES:\s+(.*)$/ ) {
 	    my @byeTeams = split /\s+/, $1;
 	    foreach (@byeTeams) {
