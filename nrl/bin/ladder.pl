@@ -33,6 +33,8 @@ foreach my $file (@resultsfiles) {
 
 my @ladderTeams = ladderPosition();
 
+# nrl.com has position team played points win drawn lost byes for against diff
+# Adding position gives us a chance of a nice scary underline below the top 8
 print "TEAM  P  W  L  D   F    A    +-\n";
 foreach (@ladderTeams) {
     # FIXME: print out a nice formatted sprintf line of ladder
