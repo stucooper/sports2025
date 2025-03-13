@@ -12,4 +12,6 @@ package AFL;
 
 $TEAMCOUNT = 18;
 
+$RESULTSDIR = '/home/scooper/sports2025/afl/results';
+$TIPSDIR    = '/home/scooper/sports2025/afl/tips';
 1;

@@ -8,7 +8,7 @@ use AFL;
 # This is the AFL version of the ladder generating program.
 # The NRL one is in sports2025/nrl/bin/ladder.pl
 # Produce the AFL ladder, from information in the results.tct files
-my $resultsdir = '/home/scooper/sports2025/afl/results';
+my $resultsdir = $AFL::RESULTSDIR;
 my %ladder = (); # multidimensional hash to generate the ladder
 my %byethisround = ();
 

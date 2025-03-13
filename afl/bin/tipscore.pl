@@ -6,8 +6,8 @@ use lib '/home/scooper/sports2025/afl/lib';
 use AFL;
 
 # Generate my tipping score, using the results/ and tips/ files
-my $resultsdir = '/home/scooper/sports2025/afl/results';
-my $tipsdir    = '/home/scooper/sports2025/afl/tips';
+my $resultsdir = $AFL::RESULTSDIR;
+my $tipsdir    = $AFL::TIPSDIR;
 
 my $totalGames  = 0;
 my $winningTips = 0;
