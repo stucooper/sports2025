@@ -22,6 +22,7 @@ foreach (@AFL::Teams) {
     $ladder{$_}{for}     = 0;
     $ladder{$_}{against} = 0;
     $ladder{$_}{diff}    = 0;
+    $ladder{$_}{points}  = 0;
 }
 
 opendir (my $resultsdirfh, $resultsdir)
@@ -34,7 +35,7 @@ foreach my $file (@resultsfiles) {
 }
 
 my @ladderTeams = ladderPosition();
-print "TEAM  P  W  L  D   F    A   %\n";
+print "TEAM  P  W  L  D   F    A     %   Pts\n";
 foreach (@ladderTeams) {
     my $p  = $ladder{$_}{played};
     my $w  = $ladder{$_}{wins};
@@ -42,11 +43,13 @@ foreach (@ladderTeams) {
     my $d  = $ladder{$_}{draws};
     my $f  = $ladder{$_}{for};
     my $a  = $ladder{$_}{against};
+    my $po = $ladder{$_}{points};
     my $pct = 0; # club's percentage
     $pct = ($f/$a)*100.0 if ($a > 0);
     $pct = sprintf("%.1f", $pct); # to 1 decimal point
-    #      TEAM  P  W  L  D   F    A   %\n";
-    printf("%3s  %2s %2s %2s  %1s %4s %4s $pct\n", $_, $p, $w, $l, $d, $f, $a);
+    #      TEAM  P   W   L    D   F    A   %   PTS\n";
+    printf("%3s  %2s %2s %2s  %1s %4s %4s %6s %2s\n",
+	     $_, $p, $w, $l,  $d, $f, $a, $pct, $po);
 }
 
 sub processResultFile {
@@ -73,16 +76,23 @@ sub processResultFile {
 		# drawn game: a bit more likely in AFL than NRL
 		$ladder{$home}{draws}++;
 		$ladder{$away}{draws}++;
+		$ladder{$away}{points} += 2;
+		$ladder{$home}{points} += 2;
 		next;
 	    }
 
 	    if ( $homeScore > $awayScore ) {
 		# home team wins
 		$ladder{$home}{wins}++;
+		$ladder{$home}{points} += 4;
 		$ladder{$away}{losses}++;
 		next;
 	    }
 
+	    # FIXME: below code never executes because my results are
+	    # always 20250308 WIN 16 LOS  4 so this never executes.
+	    # I didn't have the points += 2 in the code but it didnt matter
+	    # as code never executes
 	    if ( $homeScore < $awayScore ) {
 		# away team wins
 		$ladder{$home}{losses}++;
