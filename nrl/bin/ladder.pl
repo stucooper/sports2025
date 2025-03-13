@@ -33,7 +33,7 @@ foreach my $file (@resultsfiles) {
 
 my @ladderTeams = ladderPosition();
 
-print "TEAM P W L D F A +-\n";
+print "TEAM  P  W  L  D   F    A    +-\n";
 foreach (@ladderTeams) {
     # FIXME: print out a nice formatted sprintf line of ladder
     my $p  = $ladder{$_}{played};
@@ -44,7 +44,8 @@ foreach (@ladderTeams) {
     my $a  = $ladder{$_}{against};
     my $pd = $ladder{$_}{diff};
     # FIXME: Nice formatted sprintf for the print below
-    print "$_ $p $w $l $d $f $a $pd\n";
+    printf("%3s  %2s %2s %2s  %1s %4s %4s %4s\n", $_, $p, $w, $l, $d,
+	                                          $f, $a, $pd);
 }
 
 sub processResultFile {
