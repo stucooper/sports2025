@@ -20,6 +20,7 @@ foreach (@NRL::Teams) {
     $ladder{$_}{for}     = 0;
     $ladder{$_}{against} = 0;
     $ladder{$_}{diff}    = 0;
+    $ladder{$_}{points}  = 0;
 }
 
 opendir (my $resultsdirfh, $resultsdir)
@@ -35,7 +36,7 @@ my @ladderTeams = ladderPosition();
 
 # nrl.com has position team played points win drawn lost byes for against diff
 # Adding position gives us a chance of a nice scary underline below the top 8
-print "TEAM  P  W  L  D   F    A    +-\n";
+print "TEAM  P  W  D  L  B  F    A    +- Pts\n";
 foreach (@ladderTeams) {
     # FIXME: print out a nice formatted sprintf line of ladder
     my $p  = $ladder{$_}{played};
@@ -44,10 +45,12 @@ foreach (@ladderTeams) {
     my $d  = $ladder{$_}{draws};
     my $f  = $ladder{$_}{for};
     my $a  = $ladder{$_}{against};
+    my $b  = $ladder{$_}{byes};
     my $pd = $ladder{$_}{diff};
+    my $po = $ladder{$_}{points};
     # FIXME: Nice formatted sprintf for the print below
-    printf("%3s  %2s %2s %2s  %1s %4s %4s %4s\n", $_, $p, $w, $l, $d,
-	                                          $f, $a, $pd);
+    printf("%3s  %2s %2s %2s  %2s %1s %4s %4s %4s %2s\n",
+	     $_, $p, $w, $d, $l, $b,  $f, $a, $pd, $po);
 }
 
 sub processResultFile {
@@ -74,12 +77,15 @@ sub processResultFile {
 		# drawn game: less likely in NRL with Golden Point
 		$ladder{$home}{draws}++;
 		$ladder{$away}{draws}++;
+		$ladder{$away}{points}++;
+		$ladder{$home}{points}++;
 		next;
 	    }
 
 	    if ( $homePoints > $awayPoints ) {
 		# home team wins
 		$ladder{$home}{wins}++;
+		$ladder{$home}{points} += 2;
 		$ladder{$away}{losses}++;
 		next;
 	    }
@@ -104,6 +110,7 @@ sub processResultFile {
 	    my @byeTeams = split /\s+/, $1;
 	    foreach (@byeTeams) {
 		$ladder{$_}{byes}++;
+		$ladder{$_}{points} += 2;
 	    }
 	}
 
@@ -114,7 +121,7 @@ sub ladderPosition {
     # input: the %ladder hash
     # output: an array of the team names from highest to lowest in the ladder
     my @teams = @NRL::Teams;
-    my @sorted = sort { $ladder{$b}{wins} <=> $ladder{$a}{wins}
+    my @sorted = sort { $ladder{$b}{points} <=> $ladder{$a}{points}
 			                   ||
 			$ladder{$b}{diff} <=> $ladder{$a}{diff}
 			                   ||
