@@ -61,17 +61,17 @@ sub processResultFile {
 	# print "found line $line\n";
 
 	if ( $line =~ /\d{8}\s+(\w+)\s+(\d+)\s+(\w+)\s+(\d+)/ ) {
-	    my($home,$homePoints,$away,$awayPoints) = ($1,$2,$3,$4);
-	    $ladder{$home}{for}     += $homePoints;
-	    $ladder{$home}{against} += $awayPoints;
-	    $ladder{$away}{for}     += $awayPoints;
-	    $ladder{$away}{against} += $homePoints;
+	    my($home,$homeScore,$away,$awayScore) = ($1,$2,$3,$4);
+	    $ladder{$home}{for}     += $homeScore;
+	    $ladder{$home}{against} += $awayScore;
+	    $ladder{$away}{for}     += $awayScore;
+	    $ladder{$away}{against} += $homeScore;
 	    $ladder{$home}{played}++;
 	    $ladder{$away}{played}++;
-	    $ladder{$home}{diff} += ($homePoints - $awayPoints);
-	    $ladder{$away}{diff} += ($awayPoints - $homePoints);
+	    $ladder{$home}{diff} += ($homeScore - $awayScore);
+	    $ladder{$away}{diff} += ($awayScore - $homeScore);
 
-	    if ( $homePoints == $awayPoints ) {
+	    if ( $homeScore == $awayScore ) {
 		# drawn game: less likely in NRL with Golden Point
 		$ladder{$home}{draws}++;
 		$ladder{$away}{draws}++;
@@ -80,7 +80,7 @@ sub processResultFile {
 		next;
 	    }
 
-	    if ( $homePoints > $awayPoints ) {
+	    if ( $homeScore > $awayScore ) {
 		# home team wins
 		$ladder{$home}{wins}++;
 		$ladder{$home}{points} += 2;
@@ -88,7 +88,7 @@ sub processResultFile {
 		next;
 	    }
 
-	    if ( $homePoints < $awayPoints ) {
+	    if ( $homeScore < $awayScore ) {
 		# away team wins
 		$ladder{$home}{losses}++;
 		$ladder{$away}{wins}++;
