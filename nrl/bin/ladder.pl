@@ -36,7 +36,7 @@ my @ladderTeams = ladderPosition();
 
 # nrl.com has position team played points win drawn lost byes for against diff
 # Adding position gives us a chance of a nice scary underline below the top 8
-print "TEAM  P  W  D  L  B  F    A    +- Pts\n";
+print "TEAM  P  W  D  L  B   F    A   +- Pts\n";
 foreach (@ladderTeams) {
     my $p  = $ladder{$_}{played};
     my $w  = $ladder{$_}{wins};
