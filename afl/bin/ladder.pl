@@ -115,14 +115,25 @@ sub ladderPosition {
     my @teams = @AFL::Teams;
     my @sorted = sort { $ladder{$b}{wins} <=> $ladder{$a}{wins}
 			                   ||
+ 		        $ladder{$b}{played} <=> $ladder{$a}{played}
+                                           ||
 			$ladder{$b}{diff} <=> $ladder{$a}{diff}
 			                   ||
 			               $a cmp $b
     } @teams;
     # High to low sort, the earlier you are in the @sorted array the better
-    # your ladder position. Most wins.. if wins are equal.. higher points diff
-    # if points diff are equal (which they were for 4 teams after round 1
+    # your ladder position. Most wins.. if wins are equal.. most games played..
+    # if games are equal.. better percentage
+    # if percentage equal (normally when teams haven't played yet)
     # just do alphabetical prdering.
 
+    # Nitpicking note: My three-letter team abbreviations mean that
+    # WCT sorts after WBD but for everyone else, Western Bulldogs is the
+    # final team and West Coast is the second last team. This is extremely
+    # nitpicking because after Round 01 every team will have played a game
+    # and the absolute default alphabetical ordering $a cmp $b won't be used
+
+    # FIXME: Do percentages properly at the moment I'm doing it on points diff
+    # NRL-style.
     return(@sorted);
 }
