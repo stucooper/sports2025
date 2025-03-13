@@ -88,6 +88,10 @@ sub processResultFile {
 		next;
 	    }
 
+	    # FIXME: below code never executes because my results are
+	    # always 20250308 WIN 16 LOS  4 so this never executes.
+	    # I didn't have the points += 2 in the code but it didnt matter
+	    # as code never executes
 	    if ( $homeScore < $awayScore ) {
 		# away team wins
 		$ladder{$home}{losses}++;
