@@ -42,9 +42,11 @@ foreach (@ladderTeams) {
     my $d  = $ladder{$_}{draws};
     my $f  = $ladder{$_}{for};
     my $a  = $ladder{$_}{against};
-    my $pd = $ladder{$_}{diff};
+    my $pct = 0; # club's percentage
+    $pct = ($f/$a)*100.0 if ($a > 0);
+    $pct = sprintf("%.1f", $pct); # to 1 decimal point
     # FIXME: Nice formatted sprintf for the print below
-    print "$_ $p $w $l $d $f $a $pd\n";
+    print "$_ $p $w $l $d $f $a $pct\n";
 }
 
 sub processResultFile {
