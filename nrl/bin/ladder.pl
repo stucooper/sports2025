@@ -38,7 +38,6 @@ my @ladderTeams = ladderPosition();
 # Adding position gives us a chance of a nice scary underline below the top 8
 print "TEAM  P  W  D  L  B  F    A    +- Pts\n";
 foreach (@ladderTeams) {
-    # FIXME: print out a nice formatted sprintf line of ladder
     my $p  = $ladder{$_}{played};
     my $w  = $ladder{$_}{wins};
     my $l  = $ladder{$_}{losses};
@@ -48,7 +47,6 @@ foreach (@ladderTeams) {
     my $b  = $ladder{$_}{byes};
     my $pd = $ladder{$_}{diff};
     my $po = $ladder{$_}{points};
-    # FIXME: Nice formatted sprintf for the print below
     printf("%3s  %2s %2s %2s  %2s %1s %4s %4s %4s %2s\n",
 	     $_, $p, $w, $d, $l, $b,  $f, $a, $pd, $po);
 }
