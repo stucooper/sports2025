@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 use strict;
 use lib "/home/scooper/sports2025/afl/lib";
-use Test::More tests => 5;
+use Test::More tests => 7;
 
 # BEGIN {
   use_ok('AFL');
@@ -26,3 +26,16 @@ foreach my $team (@AFL::Teams) {
   }
 }
 is($all_teams_present, 1, "All teams have a .txt file");
+
+# TODO: Add some tests to check that TIPSDIR and RESULTSDIR exist as dirs
+my $direxists = 0;
+if ( -d $AFL::RESULTSDIR ) {
+    $direxists = 1;
+}
+is($direxists, 1, '$AFL::RESULTSDIR exists');
+
+$direxists = 0;
+if ( -d $AFL::TIPSDIR ) {
+    $direxists = 1;
+}
+is($direxists, 1, '$AFL::TIPSDIR exists');
