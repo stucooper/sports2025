@@ -6,7 +6,7 @@ use lib '/home/scooper/sports2025/nrl/lib';
 use NRL;
 
 # Produce the NRL ladder, from information in the results.tct files
-my $resultsdir = '/home/scooper/sports2025/nrl/results';
+my $resultsdir = $NRL::RESULTSDIR;
 my %ladder = (); # multidimensional hash to generate the ladder
 my %byethisround = ();
 

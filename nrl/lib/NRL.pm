@@ -12,4 +12,7 @@ package NRL;
 
 $TEAMCOUNT = 17;
 
+$RESULTSDIR = '/home/scooper/sports2025/nrl/results';
+$TIPSDIR    = '/home/scooper/sports2025/nrl/tips';
+
 1;
