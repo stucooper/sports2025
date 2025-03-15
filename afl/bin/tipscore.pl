@@ -8,9 +8,17 @@ use AFL;
 # Generate my tipping score, using the results/ and tips/ files
 my $resultsdir = $AFL::RESULTSDIR;
 my $tipsdir    = $AFL::TIPSDIR;
+my @teams      = @AFL::Teams;
 
 my $totalGames  = 0;
 my $winningTips = 0;
+my %tippingEfficiency = (); # how good am I at tipping this team?
+my %gamesPlayed = ();
+
+foreach (@teams) {
+    $tippingEfficiency{$_} = 0;
+    $gamesPlayed{$_} = 0;
+}
 
 opendir (my $resultsdirfh, $resultsdir)
     or die "cannot open $resultsdir: $!\n";
@@ -31,6 +39,10 @@ totalGames:  $totalGames
 winningTips: $winningTips
 ";
 
+foreach my $t (sort keys %tippingEfficiency) {
+    print "$t $tippingEfficiency{$t}/$gamesPlayed{$t}\n";
+}
+
 sub processResultFile {
     my ($file) = @_;
     print "processing results file $file\n";    
@@ -49,6 +61,8 @@ sub processResultFile {
 	if ( $line =~ /\d{8}\s+(\w+)\s+(\d+)\s+(\w+)\s+(\d+)/ ) {
 	    my($home,$homePoints,$away,$awayPoints) = ($1,$2,$3,$4);
 	    $totalGames++;
+	    $gamesPlayed{$home}++;
+	    $gamesPlayed{$away}++;
 	    # read through the tips file until you get the next tip
 	    my $tipFound = 0;
 
@@ -73,7 +87,11 @@ sub processResultFile {
 
 	    if ( $homePoints > $awayPoints ) {
 		# home team wins
-		$winningTips++ if ( $home eq $teamTipped);
+		if ( $home eq $teamTipped) {
+		    $winningTips++;
+		    $tippingEfficiency{$teamTipped}   += 1;
+		    $tippingEfficiency{$tippedToLose} += 1;
+		}
 		next;
 	    }
 
