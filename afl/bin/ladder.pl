@@ -51,11 +51,11 @@ foreach (@ladderTeams) {
     #       Pos TEAM  P   W   L    D   F    A   %   PTS\n";
     printf("%3s %3s  %2s %2s %2s  %1s %4s %4s %6s %2s\n",
 	     $i, $_, $p, $w, $l,  $d, $f, $a, $pct, $po);
-    $i++;
-    if ($i == 9 ) {
+    if ($i == 8 ) {
 	# we have printed 8 positions of the ladder.. the top 8
 	print "=========================================\n";
     }
+    $i++;
 }
 
 sub processResultFile {
