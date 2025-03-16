@@ -21,6 +21,7 @@ foreach (@AFL::Teams) {
     $ladder{$_}{byes}    = 0;
     $ladder{$_}{for}     = 0;
     $ladder{$_}{against} = 0;
+    $ladder{$_}{pct}     = 0;
     $ladder{$_}{diff}    = 0;
     $ladder{$_}{points}  = 0;
 }
@@ -75,8 +76,10 @@ sub processResultFile {
 	    $ladder{$away}{against} += $homeScore;
 	    $ladder{$home}{played}++;
 	    $ladder{$away}{played}++;
-	    $ladder{$home}{diff} += ($homeScore - $awayScore);
-	    $ladder{$away}{diff} += ($awayScore - $homeScore);
+	    # $ladder{$home}{diff} += ($homeScore - $awayScore);
+	    # $ladder{$away}{diff} += ($awayScore - $homeScore);
+	    $ladder{$home}{pct} = ( $ladder{$home}{for}
+				  / $ladder{$home}{against} ) * 100.0;
 
 	    if ( $homeScore == $awayScore ) {
 		# drawn game: a bit more likely in AFL than NRL
@@ -137,7 +140,7 @@ sub ladderPosition {
 			                   ||
  		        $ladder{$b}{played} <=> $ladder{$a}{played}
                                            ||
-			$ladder{$b}{diff} <=> $ladder{$a}{diff}
+			$ladder{$b}{pct} <=> $ladder{$a}{pct}
 			                   ||
 			               $a cmp $b
     } @teams;
@@ -153,7 +156,5 @@ sub ladderPosition {
     # nitpicking because after Round 01 every team will have played a game
     # and the absolute default alphabetical ordering $a cmp $b won't be used
 
-    # FIXME: Do percentages properly at the moment I'm doing it on points diff
-    # NRL-style.
     return(@sorted);
 }
