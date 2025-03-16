@@ -33,10 +33,10 @@ foreach my $file (@resultsfiles) {
 }
 
 my @ladderTeams = ladderPosition();
-
+my $i           = 1;
 # nrl.com has position team played points win drawn lost byes for against diff
 # Adding position gives us a chance of a nice scary underline below the top 8
-print "TEAM  P  W  D  L  B   F    A   +- Pts\n";
+print "Pos TEAM  P  W  D  L  B   F    A   +- Pts\n";
 foreach (@ladderTeams) {
     my $p  = $ladder{$_}{played};
     my $w  = $ladder{$_}{wins};
@@ -47,8 +47,13 @@ foreach (@ladderTeams) {
     my $b  = $ladder{$_}{byes};
     my $pd = $ladder{$_}{diff};
     my $po = $ladder{$_}{points};
-    printf("%3s  %2s %2s %2s  %2s %1s %4s %4s %4s %2s\n",
-	     $_, $p, $w, $d, $l, $b,  $f, $a, $pd, $po);
+    printf("%3s %3s  %2s %2s %2s  %2s %1s %4s %4s %4s %2s\n",
+	     $i, $_, $p, $w, $d, $l, $b,  $f, $a, $pd, $po);
+    if ($i == 8 ) {
+	# we have printed 8 positions of the ladder.. the top 8
+	print "=========================================\n";
+    }
+    $i++;
 }
 
 sub processResultFile {
