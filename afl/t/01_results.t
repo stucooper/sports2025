@@ -43,6 +43,16 @@ sub processResultsFile {
 	     	print STDERR "team error: unknown team $homeTeam\n";
                 return 0;
 	    }
+	    if ( ( $teamPlayed{$homeTeam} == 1 ) ) {
+                print STDERR "team error: $homeTeam already played\n";
+                return 0;
+	    }
+	    if ( ( $teamPlayed{$awayTeam} == 1 ) ) {
+                print STDERR "team error: $awayTeam already played\n";
+                return 0;
+	    }
+	    $teamPlayed{$homeTeam} = 1;
+	    $teamPlayed{$awayTeam} = 1;
 	}
     }
     return 1;
