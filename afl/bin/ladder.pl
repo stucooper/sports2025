@@ -35,7 +35,8 @@ foreach my $file (@resultsfiles) {
 }
 
 my @ladderTeams = ladderPosition();
-print "TEAM  P  W  L  D   F    A     %   Pts\n";
+my $i           = 1;
+print "Pos TEAM  P  W  L  D   F    A     %   Pts\n";
 foreach (@ladderTeams) {
     my $p  = $ladder{$_}{played};
     my $w  = $ladder{$_}{wins};
@@ -47,9 +48,14 @@ foreach (@ladderTeams) {
     my $pct = 0; # club's percentage
     $pct = ($f/$a)*100.0 if ($a > 0);
     $pct = sprintf("%.1f", $pct); # to 1 decimal point
-    #      TEAM  P   W   L    D   F    A   %   PTS\n";
-    printf("%3s  %2s %2s %2s  %1s %4s %4s %6s %2s\n",
-	     $_, $p, $w, $l,  $d, $f, $a, $pct, $po);
+    #       Pos TEAM  P   W   L    D   F    A   %   PTS\n";
+    printf("%3s %3s  %2s %2s %2s  %1s %4s %4s %6s %2s\n",
+	     $i, $_, $p, $w, $l,  $d, $f, $a, $pct, $po);
+    $i++;
+    if ($i == 9 ) {
+	# we have printed 8 positions of the ladder.. the top 8
+	print "=========================================\n";
+    }
 }
 
 sub processResultFile {
