@@ -11,6 +11,11 @@ I won the Friday night and the Saturday Geelong easily, but the
 Sydney Swans lost a tight game against Brisbane (4 points).
 Western Bulldogs won and Collingwood romped Port Adelaide MCG Saturday night.
 (for some reason I'd tipped Port which was a dumb tip).
+Redemption: AFL website gave me 6/9 on the tips and turns out I had
+tipped Collingwood to beat Port; I must have misentered the tips in
+round01.txt; I've since fixed it. So the part above is wrong, I'd
+actually tipped Collingwood, I need to take better care entering my tips
+into this git project.
 
 Thursday night not in my bet was the upset of all upsets young Richmond
 beating Carlton, I certainly didn't tip that and wouldn't have had it in
