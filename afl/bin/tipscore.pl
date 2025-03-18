@@ -6,6 +6,11 @@ use lib '/home/scooper/sports2025/afl/lib';
 use AFL;
 
 # Generate my tipping score, using the results/ and tips/ files
+# The tipping comp I am in is Official AFL tipping and has seveal
+# side-games on top of straight up tipping, I will add support for
+# them if I can; there are comments at the bottom of the file about
+# the side-game features
+
 my $resultsdir = $AFL::RESULTSDIR;
 my $tipsdir    = $AFL::TIPSDIR;
 my @teams      = @AFL::Teams;
@@ -14,6 +19,10 @@ my $totalGames  = 0;
 my $winningTips = 0;
 my %tippingEfficiency = (); # how good am I at tipping this team?
 my %gamesPlayed = ();
+
+# Minimum 5 side-game: Correctly tip 5 or more tips per round
+# starting from Round 01
+my $aliveInMin5 = 1;
 
 foreach (@teams) {
     $tippingEfficiency{$_} = 0;
@@ -43,13 +52,33 @@ foreach my $t (sort keys %tippingEfficiency) {
     print "$t $tippingEfficiency{$t}/$gamesPlayed{$t}\n";
 }
 
+if ( $aliveInMin5 ) {
+    print "Still alive in Min5\n";
+}
+else {
+    print "Lost in Min5\n";
+}
+
 sub processResultFile {
     my ($file) = @_;
+    my $round = 0;
+
     print "processing results file $file\n";    
+
+    if ( $file =~ /round0?(\d+).txt/ ) {
+	$round = $1;
+	print "Using round $round\n";
+    }
+    else {
+	die "Cannot figure out round number from filename $file\n";
+    }
+
     open(my $fh, '<', "$resultsdir/$file")
 	or die "cannot open $resultsdir/$file: $!\n";
     open(my $tipfh, '<', "$tipsdir/$file")
 	or die "cannot open tip file $tipsdir/$file: $!\n";
+
+    my $winningTipsThisRound = 0;
     
     while (my $line = <$fh>) {
 
@@ -89,6 +118,7 @@ sub processResultFile {
 		# home team wins
 		if ( $home eq $teamTipped) {
 		    $winningTips++;
+		    $winningTipsThisRound++;
 		    $tippingEfficiency{$teamTipped}   += 1;
 		    $tippingEfficiency{$tippedToLose} += 1;
 		}
@@ -104,15 +134,23 @@ sub processResultFile {
 	}
     }
 
-    # FIXME: Add support for the margin feature of AFL tipping.
+    # TODO: Add support for the margin feature of AFL tipping.
     # In Round 00 I said Syd d Haw by 16, in the event Haw wom by 20
     # so my margin score is 36 and gets added to each round. The lower
     # your margin score, the better.
 
-    # FIXME: From Round 7, AFL tipping has a "Gauntlet" competition.
+    # TODO: From Round 7, AFL tipping has a "Gauntlet" competition.
     # Pick a team each round to win, but never the same team in the next
     # Gauntlet round. This seems to be the same as the "Knockout" feature
     # in my NRL tipping comp; see the long FIXME in nrl/bin/tipscore.pl
+
+    # TODO: I'm such an addict of tipscore.pl that I run it on weekends
+    # in uncompleted rounds... the code below needs to be augmented so
+    # that it doesn't mark me as dead in Min5 unless the round is complete
+    if ( $round > 0 && $winningTipsThisRound < 5 ) {
+	print "min5 dead in round $round\n";
+	$aliveInMin5 = 0;
+    }
 
     close($fh);
     close($tipfh);
