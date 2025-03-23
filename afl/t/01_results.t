@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 use strict;
 use lib "/home/scooper/sports2025/afl/lib";
-use Test::More tests => 3;
+use Test::More tests => 4;
 # Number of tests: 1 + number of results files
 
 use_ok('AFL');
