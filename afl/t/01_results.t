@@ -32,6 +32,7 @@ sub processResultsFile {
 	or die "cannot open $resultsdir/$file: $!\n";
     while (my $line = <$fh>) {
 	chomp($line);
+	next if ( $line =~ /^#/ ); # column 1 comment line
 	if ( $line =~ /(\d{8})\s+(\w+)\s+\d+\s+(\w+)\s+\d+/ ) {
 	    my ($matchDate, $homeTeam, $awayTeam) = ($1,$2,$3);
 	    if ($matchDate < $date) {
@@ -57,7 +58,11 @@ sub processResultsFile {
 	    }
 	    $teamPlayed{$homeTeam} = 1;
 	    $teamPlayed{$awayTeam} = 1;
+	    next;
 	}
+	# if we reach here there is a bad line in the results file
+	print STDERR "Unknown results file line: $line\n";
+	return 0;
     }
     return 1;
 }
