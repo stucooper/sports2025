@@ -21,6 +21,9 @@ my $winningTipsThisRound = 0;
 my $gamesThisRound = 0;
 my %tippingEfficiency = (); # how good am I at tipping this team?
 my %gamesPlayed = ();
+my $stopRound = 100; # arbitrary large number there are never 100 rounds
+# I will add a cmdline argument that will stop tipping after that round
+# eg tipscore.pl -n 3 will stop after round 3
 
 # Minimum 5 side-game: Correctly tip 5 or more tips per round
 # starting from Round 01
@@ -68,10 +71,12 @@ sub processResultFile {
     my $round = 0;
 
     print "processing results file $file\n";    
-    $gamesThisRound = 0;
 
     if ( $file =~ /round0?(\d+).txt/ ) {
 	$round = $1;
+	if ($round > $stopRound) {
+	    return 1;
+	}
 	# print "Using round $round\n";
     }
     else {
@@ -83,6 +88,7 @@ sub processResultFile {
     open(my $tipfh, '<', "$tipsdir/$file")
 	or die "cannot open tip file $tipsdir/$file: $!\n";
 
+    $gamesThisRound = 0;
     $winningTipsThisRound = 0;
     
     while (my $line = <$fh>) {
