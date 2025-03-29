@@ -17,6 +17,8 @@ my @teams      = @AFL::Teams;
 
 my $totalGames  = 0;
 my $winningTips = 0;
+my $winningTipsThisRound = 0;
+my $gamesThisRound = 0;
 my %tippingEfficiency = (); # how good am I at tipping this team?
 my %gamesPlayed = ();
 
@@ -46,6 +48,10 @@ totalGames:  $totalGames
 winningTips: $winningTips
 ";
 
+# This line is needed because I'm a tipscore.pl addict and
+# run this program on the weekends in uncompleted rounds
+print "This Round: $winningTipsThisRound/$gamesThisRound\n";
+
 foreach my $t (sort keys %tippingEfficiency) {
     print "$t $tippingEfficiency{$t}/$gamesPlayed{$t}\n";
 }
@@ -62,6 +68,7 @@ sub processResultFile {
     my $round = 0;
 
     print "processing results file $file\n";    
+    $gamesThisRound = 0;
 
     if ( $file =~ /round0?(\d+).txt/ ) {
 	$round = $1;
@@ -76,7 +83,7 @@ sub processResultFile {
     open(my $tipfh, '<', "$tipsdir/$file")
 	or die "cannot open tip file $tipsdir/$file: $!\n";
 
-    my $winningTipsThisRound = 0;
+    $winningTipsThisRound = 0;
     
     while (my $line = <$fh>) {
 
@@ -88,6 +95,7 @@ sub processResultFile {
 	if ( $line =~ /\d{8}\s+(\w+)\s+(\d+)\s+(\w+)\s+(\d+)/ ) {
 	    my($home,$homePoints,$away,$awayPoints) = ($1,$2,$3,$4);
 	    $totalGames++;
+	    $gamesThisRound++;
 	    $gamesPlayed{$home}++;
 	    $gamesPlayed{$away}++;
 	    # read through the tips file until you get the next tip
