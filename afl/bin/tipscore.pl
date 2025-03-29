@@ -32,12 +32,10 @@ foreach (@teams) {
 opendir (my $resultsdirfh, $resultsdir)
     or die "cannot open $resultsdir: $!\n";
 
-my @resultsfiles = grep { /.txt$/ } readdir $resultsdirfh;
+my @resultsfiles = grep { /.txt$/ } sort readdir $resultsdirfh;
 
 opendir (my $tipsdirfh, $tipsdir)
     or die "cannot open $tipsdir: $!\n";
-
-my @tipsfiles = grep { /.txt$/ } readdir $tipsdirfh;
 
 foreach my $file (@resultsfiles) {
     processResultFile($file);
@@ -67,7 +65,7 @@ sub processResultFile {
 
     if ( $file =~ /round0?(\d+).txt/ ) {
 	$round = $1;
-	print "Using round $round\n";
+	# print "Using round $round\n";
     }
     else {
 	die "Cannot figure out round number from filename $file\n";
