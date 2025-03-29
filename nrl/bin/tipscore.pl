@@ -23,12 +23,7 @@ foreach (@teams) {
 opendir (my $resultsdirfh, $resultsdir)
     or die "cannot open $resultsdir: $!\n";
 
-my @resultsfiles = grep { /.txt$/ } readdir $resultsdirfh;
-
-opendir (my $tipsdirfh, $tipsdir)
-    or die "cannot open $tipsdir: $!\n";
-
-my @tipsfiles = grep { /.txt$/ } readdir $tipsdirfh;
+my @resultsfiles = grep { /.txt$/ } sort readdir $resultsdirfh;
 
 foreach my $file (@resultsfiles) {
     processResultFile($file);
