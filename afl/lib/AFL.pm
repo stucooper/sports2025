@@ -1,6 +1,6 @@
 package AFL;
 
-# The 18 teams in the 2024 AFL competition, three letter abbreviations
+# The 18 teams in the 2025 AFL competition, three letter abbreviations
 @Teams = qw ( 
     ADE BRI CAR
     COL ESS FRE

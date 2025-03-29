@@ -1,6 +1,6 @@
 package NRL;
 
-# The 17 teams in the 2024 AFL competition, three letter abbreviations
+# The 17 teams in the 2025 AFL competition, three letter abbreviations
 @Teams = qw ( 
     AUK BRI BUL
     CAN CRO GCT
