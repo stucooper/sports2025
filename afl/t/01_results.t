@@ -12,7 +12,7 @@ opendir(my $resultsdirfh, $resultsdir)
     or die "Cannot open resultsdir $resultsdir: $!\n";
 
 my (@resultsfiles) = grep{ /\.txt$/ && -f "$resultsdir/$_" } 
-                        readdir ($resultsdirfh);
+                        sort readdir ($resultsdirfh);
 
 foreach my $file (@resultsfiles) {
     my $i = processResultsFile($file);
