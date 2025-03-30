@@ -107,11 +107,11 @@ sub processResultFile {
 	}
 
 	# Handle any BYE teams this round. I originally implemented this
-	# as assume every time has a bye and set their bye to 0 once
+	# as assume every team has a bye and set their bye to 0 once
 	# I detect they've played this week, but then I thought of
 	# State of Origin and split rounds. So I've changed it that
 	# a team with a 2-point bye is explicitly mentioned in the
-	# results file with BYE: TEAM1 TEAM2 TEAM3
+	# results file with BYES: TEAM1 TEAM2 TEAM3
 
 	if ( $line =~ /BYES:\s+(.*)$/ ) {
 	    my @byeTeams = split /\s+/, $1;
