@@ -1,0 +1,12 @@
+# Thursday
+COL v CAR
+# Friday
+GEE v MEL
+# Saturday
+GCT v ADE
+RIC v BRI
+NOR v SYD
+# Sunday
+GWS v WCT
+POR v STK
+FRE v WBD
