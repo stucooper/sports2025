@@ -46,7 +46,7 @@ foreach my $t (sort keys %tippingEfficiency) {
 
 sub processResultFile {
     my ($file) = @_;
-    print "processing results file $file\n";    
+    print "processing results file $file...";
     open(my $fh, '<', "$resultsdir/$file")
 	or die "cannot open $resultsdir/$file: $!\n";
     open(my $tipfh, '<', "$tipsdir/$file")
@@ -109,6 +109,7 @@ sub processResultFile {
 	}
     }
 
+    print "$winningTipsThisRound/$gamesThisRound\n";
     # FIXME: The itipFooty comp I'm in has a "knockout comp" feature
     # where you pick one side each round (but not the same team in
     # consecutive rounds) that must win.. if your knockout side wins that
