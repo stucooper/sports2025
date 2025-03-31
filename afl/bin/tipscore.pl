@@ -70,7 +70,7 @@ sub processResultFile {
     my ($file) = @_;
     my $round = 0;
 
-    print "processing results file $file\n";    
+    print "processing results file $file..";
 
     if ( $file =~ /round0?(\d+).txt/ ) {
 	$round = $1;
@@ -146,6 +146,7 @@ sub processResultFile {
 	}
     }
 
+    print "$winningTipsThisRound/$gamesThisRound\n";
     # TODO: Add support for the margin feature of AFL tipping.
     # In Round 00 I said Syd d Haw by 16, in the event Haw wom by 20
     # so my margin score is 36 and gets added to each round. The lower
