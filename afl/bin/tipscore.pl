@@ -22,8 +22,13 @@ my $gamesThisRound = 0;
 my %tippingEfficiency = (); # how good am I at tipping this team?
 my %gamesPlayed = ();
 my $stopRound = 100; # arbitrary large number there are never 100 rounds
-# I will add a cmdline argument that will stop tipping after that round
-# eg tipscore.pl -n 3 will stop after round 3
+# I will add a cmdline argument that will stop tipscore after that round
+# eg tipscore.pl -n 3 will stop after round 3. That way I can get a history
+# "this is how I was after round0, this is how I was after round1" and so on
+# Since I thought of $stopRound, I added round results as each roundXX.txt
+# result file was processed, and I don't feel as strong a need for
+# $stopRound anymore. Still, here it is in the program and I might come
+# back to it.
 
 # Minimum 5 side-game: Correctly tip 5 or more tips per round
 # starting from Round 01
@@ -167,6 +172,9 @@ sub processResultFile {
     # 3 out of 8. You need to be at least 5/8 or 4/7 or 3/6 or 2/5 or 1/4,
     # in an 8-round match, to be able to tip 5.
     # So gamesPlayed - winningTipsThisRound <= 4
+
+    # It sounds like Matchplay Golf where if you're 2 behind with 3 to play
+    # you're ok but if you're 3 behind with 2 to play, game over.
 
     # You can alive in min5 and still bomb out eg 3/3 but end 3/8.
     if ( $round > 0 && $winningTipsThisRound < 5 ) {
