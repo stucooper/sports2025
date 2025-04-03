@@ -160,6 +160,15 @@ sub processResultFile {
     # TODO: I'm such an addict of tipscore.pl that I run it on weekends
     # in uncompleted rounds... the code below needs to be augmented so
     # that it doesn't mark me as dead in Min5 unless the round is complete
+
+    # Actually there should be a heuristic to know if min5 is dead no matter
+    # how few games are played.. if you're more than 5 tips down you're out
+    # eg you've tipped 1 out of 6 you're out because most you'll get is
+    # 3 out of 8. You need to be at least 5/8 or 4/7 or 3/6 or 2/5 or 1/4,
+    # in an 8-round match, to be able to tip 5.
+    # So gamesPlayed - winningTipsThisRound <= 4
+
+    # You can alive in min5 and still bomb out eg 3/3 but end 3/8.
     if ( $round > 0 && $winningTipsThisRound < 5 ) {
 	print "min5 dead in round $round\n";
 	$aliveInMin5 = 0;
