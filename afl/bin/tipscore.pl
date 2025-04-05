@@ -24,7 +24,7 @@ my $winningTipsThisRound = 0;
 my $gamesThisRound = 0;
 my %tippingEfficiency = (); # how good am I at tipping this team?
 my %gamesPlayed = ();
-my $breakdown = 0;
+my $breakdown = 0; # report tippingEfficiency results per team
 my $stopRound = 100; # arbitrary large number there are never 100 rounds
 # $0 -n 2 stops the processing after Round 2 and reports tipping up to then
 # with no -n option stopRound is 100 and all results files processed
@@ -146,8 +146,13 @@ sub processResultFile {
 		if ( $home eq $teamTipped) {
 		    $winningTips++;
 		    $winningTipsThisRound++;
+# If we want to have maximum efficiency we only need to perform
+# the next two lines if $breakdown != 0
 		    $tippingEfficiency{$teamTipped}   += 1;
 		    $tippingEfficiency{$tippedToLose} += 1;
+# But I'm lazily computing it regardless, even if we're not
+# going to report on it.
+# End of $breakdown != 0 comment
 		}
 		next;
 	    }
