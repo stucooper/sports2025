@@ -35,6 +35,16 @@ foreach my $file (@resultsfiles) {
     processResultFile($file);
 }
 
+# quickly calculate the percentage for each team, before sorting into
+# ladder position
+foreach (@AFL::Teams) {
+    my $f  = $ladder{$_}{for};
+    my $a  = $ladder{$_}{against};
+    my $pct = 0;
+    $pct = ($f/$a)*100.0 if ($a > 0);
+    $ladder{$_}{pct} = $pct;
+}
+
 my @ladderTeams = ladderPosition();
 my $i           = 1;
 print "Pos TEAM  P  W  L  D   F    A     %   Pts\n";
@@ -46,8 +56,7 @@ foreach (@ladderTeams) {
     my $f  = $ladder{$_}{for};
     my $a  = $ladder{$_}{against};
     my $po = $ladder{$_}{points};
-    my $pct = 0; # club's percentage
-    $pct = ($f/$a)*100.0 if ($a > 0);
+    my $pct = $ladder{$_}{pct};
     $pct = sprintf("%.1f", $pct); # to 1 decimal point
     #       Pos TEAM  P   W   L    D   F    A   %   PTS\n";
     printf("%3s %3s  %2s %2s %2s  %1s %4s %4s %6s %2s\n",
