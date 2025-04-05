@@ -14,4 +14,5 @@ $TEAMCOUNT = 18;
 
 $RESULTSDIR = '/home/scooper/sports2025/afl/results';
 $TIPSDIR    = '/home/scooper/sports2025/afl/tips';
+$GAMESDIR   = '/home/scooper/sports2025/afl/fixtures';
 1;
