@@ -1,0 +1,4 @@
+for i in *.t
+do
+  perl $i
+done
