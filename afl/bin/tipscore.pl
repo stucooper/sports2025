@@ -25,13 +25,9 @@ my $gamesThisRound = 0;
 my %tippingEfficiency = (); # how good am I at tipping this team?
 my %gamesPlayed = ();
 my $stopRound = 100; # arbitrary large number there are never 100 rounds
-# I will add a cmdline argument that will stop tipscore after that round
-# eg tipscore.pl -n 3 will stop after round 3. That way I can get a history
-# "this is how I was after round0, this is how I was after round1" and so on
-# Since I thought of $stopRound, I added round results as each roundXX.txt
-# result file was processed, and I don't feel as strong a need for
-# $stopRound anymore. Still, here it is in the program and I might come
-# back to it.
+# $0 -n 2 stops the processing after Round 2 and reports tipping up to then
+# with no -n option stopRound is 100 and all results files processed
+# $0 -n 2 == "this is what my tipping was like after Round 2 finished"
 getopts('n:');
 if (defined $opt_n) {
     $stopRound = $opt_n;
