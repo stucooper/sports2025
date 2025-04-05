@@ -154,10 +154,12 @@ sub ladderPosition {
 			               $a cmp $b
     } @teams;
     # High to low sort, the earlier you are in the @sorted array the better
-    # your ladder position. Most wins.. if wins are equal.. most games played..
-    # if games are equal.. better percentage
+    # your ladder position. Most wins.. if wins are equal.. better precentage
     # if percentage equal (normally when teams haven't played yet)
-    # just do alphabetical prdering.
+    # most games played
+    # if games are equal.. # just do alphabetical prdering.
+    # AFL has stupid round00 "Opening" so the ladder in the first few weeks
+    # is hardly worth looking at grrrrrr
 
     # Nitpicking note: My three-letter team abbreviations mean that
     # WCT sorts after WBD but for everyone else, Western Bulldogs is the
