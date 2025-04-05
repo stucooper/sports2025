@@ -1,15 +1,18 @@
 #!/usr/bin/perl
-use strict;
-use warnings;
-
-use lib '/home/scooper/sports2025/afl/lib';
-use AFL;
-
 # Generate my tipping score, using the results/ and tips/ files
 # The tipping comp I am in is Official AFL tipping and has seveal
 # side-games on top of straight up tipping, I will add support for
 # them if I can; there are comments at the bottom of the file about
 # the side-game features
+
+use strict;
+use warnings;
+
+use Getopt::Std;
+use lib '/home/scooper/sports2025/afl/lib';
+use AFL;
+
+our ($opt_n);
 
 my $resultsdir = $AFL::RESULTSDIR;
 my $tipsdir    = $AFL::TIPSDIR;
@@ -29,6 +32,10 @@ my $stopRound = 100; # arbitrary large number there are never 100 rounds
 # result file was processed, and I don't feel as strong a need for
 # $stopRound anymore. Still, here it is in the program and I might come
 # back to it.
+getopts('n:');
+if (defined $opt_n) {
+    $stopRound = $opt_n;
+}
 
 # Minimum 5 side-game: Correctly tip 5 or more tips per round
 # starting from Round 01
@@ -75,7 +82,6 @@ sub processResultFile {
     my ($file) = @_;
     my $round = 0;
 
-    print "processing results file $file..";
 
     if ( $file =~ /round0?(\d+).txt/ ) {
 	$round = $1;
@@ -87,6 +93,8 @@ sub processResultFile {
     else {
 	die "Cannot figure out round number from filename $file\n";
     }
+
+    print "processing results file $file..";
 
     open(my $fh, '<', "$resultsdir/$file")
 	or die "cannot open $resultsdir/$file: $!\n";
