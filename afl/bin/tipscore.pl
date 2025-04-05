@@ -12,7 +12,7 @@ use Getopt::Std;
 use lib '/home/scooper/sports2025/afl/lib';
 use AFL;
 
-our ($opt_n);
+our ($opt_n, $opt_b);
 
 my $resultsdir = $AFL::RESULTSDIR;
 my $tipsdir    = $AFL::TIPSDIR;
@@ -24,13 +24,17 @@ my $winningTipsThisRound = 0;
 my $gamesThisRound = 0;
 my %tippingEfficiency = (); # how good am I at tipping this team?
 my %gamesPlayed = ();
+my $breakdown = 0;
 my $stopRound = 100; # arbitrary large number there are never 100 rounds
 # $0 -n 2 stops the processing after Round 2 and reports tipping up to then
 # with no -n option stopRound is 100 and all results files processed
 # $0 -n 2 == "this is what my tipping was like after Round 2 finished"
-getopts('n:');
+getopts('n:b');
 if (defined $opt_n) {
     $stopRound = $opt_n;
+}
+if (defined $opt_b) {
+    $breakdown = 1;
 }
 
 # Minimum 5 side-game: Correctly tip 5 or more tips per round
@@ -63,8 +67,10 @@ winningTips: $winningTips
 # run this program on the weekends in uncompleted rounds
 print "This Round: $winningTipsThisRound/$gamesThisRound\n";
 
-foreach my $t (sort keys %tippingEfficiency) {
-    print "$t $tippingEfficiency{$t}/$gamesPlayed{$t}\n";
+if ($breakdown) {
+    foreach my $t (sort keys %tippingEfficiency) {
+	print "$t $tippingEfficiency{$t}/$gamesPlayed{$t}\n";
+    }
 }
 
 if ( $aliveInMin5 ) {
