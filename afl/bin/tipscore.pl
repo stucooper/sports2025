@@ -177,9 +177,13 @@ sub processResultFile {
     # Gauntlet round. This seems to be the same as the "Knockout" feature
     # in my NRL tipping comp; see the long FIXME in nrl/bin/tipscore.pl
 
-    # TODO: I'm such an addict of tipscore.pl that I run it on weekends
-    # in uncompleted rounds... the code below needs to be augmented so
-    # that it doesn't mark me as dead in Min5 unless the round is complete
+    # Minimum 5 "Min5" Minigame. Starts in Round 1.
+    # Correctly tip 5 or more tips per round.
+
+    # I'm such an addict of tipscore.pl that I run it on weekends
+    # in uncompleted rounds... the code below tries to
+    # not mark me as dead in Min5 unless the round is complete or
+    # I'm too far behind to catch up to 5/9 tips
 
     # Actually there should be a heuristic to know if min5 is dead no matter
     # how few games are played.. if you're more than 5 tips down you're out
@@ -191,11 +195,30 @@ sub processResultFile {
     # It sounds like Matchplay Golf where if you're 2 behind with 3 to play
     # you're ok but if you're 3 behind with 2 to play, game over.
 
-    # You can alive in min5 and still bomb out eg 3/3 but end 3/8.
-    if ( $round > 0 && $winningTipsThisRound < 5 ) {
-	print "min5 dead in round $round\n";
-	$aliveInMin5 = 0;
+    # Are we dead in min5?
+    if ( $round == 0 ) {
+	# only 2 or 4 games, min5 minigame not on yet
+	;
     }
+    else {
+	my $behind = $gamesThisRound - $winningTipsThisRound;
+	if ( $behind > 4 ) {
+            # you're too far behind you can't catch up you can't tip 5/9
+            # no matter how good the rest of your tips this round
+	    $aliveInMin5 = 0;
+	}
+	# FIXME: If there are only 8 games this round, and the round is
+	# complete and you only scored 4/8 you are dead in Min5.
+	# This is tricky because I could be running tipscore in a 9 match
+	# round with the 9th game in Western Australia and the same
+	# score of 4/8 but still be alive with one game to play. Tricky!!
+
+	# Also notice that we set aliveInMin5 to 1 at the top of the program
+	# but we don't re-set it to 1 anywhere else. Once you're dead in Min5
+	# you STAY dead. If you're 4/9 in Round 9 and 9/9 in Round 10 you're
+	# still dead in Min5 since you lost that minigame forever in Round9
+    }
+
 
     close($fh);
     close($tipfh);
