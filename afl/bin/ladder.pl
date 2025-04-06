@@ -70,7 +70,7 @@ foreach (@ladderTeams) {
     my $a  = $ladder{$_}{against};
     my $po = $ladder{$_}{points};
     my $pct = $ladder{$_}{pct};
-    $pct = sprintf("%.1f", $pct); # to 1 decimal point
+    $pct = sprintf("%.2f", $pct); # to 2 digits after decimal point
     #       Pos TEAM  P   W   L    D   F    A   %   PTS\n";
     printf("%3s %3s  %2s %2s %2s  %1s %4s %4s %6s %2s\n",
 	     $i, $_, $p, $w, $l,  $d, $f, $a, $pct, $po);
