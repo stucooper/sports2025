@@ -2,9 +2,11 @@
 use strict;
 use warnings;
 
+use Getopt::Std;
 use lib '/home/scooper/sports2025/nrl/lib';
 use NRL;
 
+our ($opt_b);
 # Generate my tipping score, using the results/ and tips/ files
 my $resultsdir = $NRL::RESULTSDIR;
 my $tipsdir    = $NRL::TIPSDIR;
@@ -16,6 +18,11 @@ my $winningTipsThisRound = 0;
 my $gamesThisRound = 0;
 my %tippingEfficiency = (); # how good am I at tipping this team?
 my %gamesPlayed = ();
+my $breakdown = 0; # report tippingEfficiency results per team
+getopts('b');
+if (defined $opt_b) {
+    $breakdown = 1;
+}
 
 foreach (@teams) {
     $tippingEfficiency{$_} = 0;
@@ -40,8 +47,10 @@ winningTips: $winningTips
 # run this program on the weekends in uncompleted rounds
 print "This Round: $winningTipsThisRound/$gamesThisRound\n";
 
-foreach my $t (sort keys %tippingEfficiency) {
-    print "$t $tippingEfficiency{$t}/$gamesPlayed{$t}\n";
+if ($breakdown) {
+    foreach my $t (sort keys %tippingEfficiency) {
+	print "$t $tippingEfficiency{$t}/$gamesPlayed{$t}\n";
+    }
 }
 
 sub processResultFile {
