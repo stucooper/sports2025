@@ -1,0 +1,39 @@
+ROUND 4
+=======
+
+Hey diary, I got married this round! Thursday 3rd April to be exact,
+so the Collingwood win over Carlton completely escaped my notice, it's
+strange to ignore a Melbourne blockbuster!
+
+Last week I wrote that tipping was good at 7/8 and it stayed good at 7/8
+and a 6/6 multi-bet sadly got 5/6. Port Adelaide are bad this year
+and couldn't win against St Kilda, even though the game was at the Adelaide
+Oval. St Kilda seem unusually strong this year. They are one of my
+hardest teams to tip (breakdown: 2/4) which is now also my frequency
+for tipping Port (2/4). Amusingly my worst tipped team is Sydney Swans
+(1/4; thought they'd beat Hawthorn, Brisbane, thought Fremantle would
+beat them in Perth, it took a game against North Melbourne until I could
+finally get them right!).
+
+I did a lot of work on my AFL Perl programs in this github project,
+adding command-line flags to both tipscore.pl and ladder.pl. I got the
+Football Record at GWS v West Coast and comparing their ladder against
+mine I was able to correct 2 Round02 results; I'd entereted the wrong
+losing scores for two of the games which of course threw the percentages
+out of whack. I'll do my best to improve my data-entry in future games.
+
+I'm losing interest in NRL pretty quickly and my tipping in that sport
+was terrible this week: 2/8! I'll be out of contention in Martin's tipping
+comp pretty quickly but I guess I'm in it for the full season! Some of
+the final scores are getting close to my imagined pick-the-scores;
+20-12ish for a decently close game and 48-24 for a top team versus
+a team with attacking flair. Just looking at the final numbers a few
+of them are matching this basic pattern. Maybe Pick-the-score is a
+better bet (and PTS is an absolute crapshoot) then regular betting
+for NRL this year?
+
+This coming week I'll have time and even most of Wednesday to consider
+betting strategies so I should do a lot better in NRL tipping at least
+(heck I'll even get the Daily Telegraph a bit). AFL I'm tipping very
+strongly at so I won't need too many changes there; it is the Adelaide
+Gather Round so that's something novel to look forward to.
