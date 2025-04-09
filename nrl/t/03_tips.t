@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 use strict;
-use lib "/home/scooper/sports2025/afl/lib";
+use lib "/home/scooper/sports2025/nrl/lib";
 use Test::More tests => 4;
 # Number of tests: 1 + number of tips files
 
@@ -9,9 +9,9 @@ use Test::More tests => 4;
 # A valid tip line is     TEAM d TEAM
 # So the regular expression and the logic is almost identical
 
-use_ok('AFL');
+use_ok('NRL');
 
-my $tipsdir = $AFL::TIPSDIR;
+my $tipsdir = $NRL::TIPSDIR;
 
 opendir(my $tipsdirfh, $tipsdir)
     or die "Cannot open tipsdir $tipsdir: $!\n";
@@ -26,7 +26,7 @@ foreach my $file (@tipsfiles) {
 
 sub processTipsFile {
     my ($file) = @_;
-    my @teams = @AFL::Teams;
+    my @teams = @NRL::Teams;
     my %teamTipped;
     foreach (@teams) {
 	$teamTipped{$_} = 0;
