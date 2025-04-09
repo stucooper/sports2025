@@ -6,4 +6,4 @@ SOU d RED
 STG d BUL
 MAN d NQL
 MEL d PAR
-Knockout: MEL
+# Knockout: MEL
