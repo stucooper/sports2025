@@ -1,0 +1,3 @@
+# AFL results round05 Gather Round
+20250310 GEE 119 ADE 100
+20250311 COL 109 SYD  78
