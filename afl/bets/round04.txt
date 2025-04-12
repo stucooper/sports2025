@@ -1,0 +1,23 @@
+COL 1.40/GEE 1.20/GCT 1.74/SYD 1.55/POR 1.50/FRE 1.60 $5@11.49
+
+(all legs won except Port lost to St Kilda 72-89)
+
+First heartbreak bet of the season, 5/6. OK it wasn't a hugely paying bet
+at 11.49 but I would've happily taken the $57.45 and the $52.45 win.
+My tips were 7/8 I left off some unbackable 1.02 bets like GWS over
+West Coast; they don't add anything to the dividend and they can black-swan
+kill your bet. Basically never include games of 1.05 or less in your multis
+for this reason.
+
+Tipping Efficiency after 4 rounds (afl/bin/tipscore.pl -b -n 4)
+
+ADE 4/4  BRI 3/4  CAR 3/4
+COL 3/4  ESS 2/3  FRE 3/4
+GCT 2/3  GEE 3/4  GWS 3/4
+HAW 3/4  MEL 3/4  NOR 3/4
+POR 2/4  RIC 3/4  STK 2/4
+SYD 1/4  WBD 4/4  WCT 3/4
+
+I'm worst at tipping the Swans, Port and St Kilda; the Port-St Kilda
+result killed my bet and also shows me a bad tipper of both teams!
+
