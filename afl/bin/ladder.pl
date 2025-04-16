@@ -72,8 +72,8 @@ foreach (@ladderTeams) {
     printf("%3s %3s  %2s %2s %2s  %1s %4s %4s %6s %2s\n",
 	     $i, $_, $p, $w, $l,  $d, $f, $a, $pct, $po);
     if ($i == 8 ) {
-	# we have printed 8 positions of the ladder.. the top 8
-	print "=========================================\n";
+        # we have printed 8 positions of the ladder.. the top 8
+        print "=========================================\n";
     }
     $i++;
 }
@@ -90,17 +90,17 @@ sub processResultFile {
         # print "Using round $round\n";
     }
     else {
-	die "Cannot figure out round number from filename $file\n";
+        die "Cannot figure out round number from filename $file\n";
     }
 
     print "processing results file $file\n";    
     open(my $fh, '<', "$resultsdir/$file")
-	or die "cannot open $resultsdir/$file: $!\n";
+        or die "cannot open $resultsdir/$file: $!\n";
     while (my $line = <$fh>) {
-	chomp($line);
-	# print "found line $line\n";
+        chomp($line);
+        # print "found line $line\n";
 
-	if ( $line =~ /\d{8}\s+(\w+)\s+(\d+)\s+(\w+)\s+(\d+)/ ) {
+        if ( $line =~ /\d{8}\s+(\w+)\s+(\d+)\s+(\w+)\s+(\d+)/ ) {
             my($home,$homeScore,$away,$awayScore) = ($1,$2,$3,$4);
             $ladder{$home}{for}     += $homeScore;
             $ladder{$home}{against} += $awayScore;
@@ -111,35 +111,35 @@ sub processResultFile {
             $ladder{$home}{pct} = ( $ladder{$home}{for}
                                     / $ladder{$home}{against} ) * 100.0;
 
-	    if ( $homeScore == $awayScore ) {
-		# drawn game: a bit more likely in AFL than NRL
-		$ladder{$home}{draws}++;
-		$ladder{$away}{draws}++;
-		$ladder{$away}{points} += 2;
-		$ladder{$home}{points} += 2;
-		next;
-	    }
+            if ( $homeScore == $awayScore ) {
+                # drawn game: a bit more likely in AFL than NRL
+                $ladder{$home}{draws}++;
+                $ladder{$away}{draws}++;
+                $ladder{$away}{points} += 2;
+                $ladder{$home}{points} += 2;
+                next;
+            }
 
-	    if ( $homeScore > $awayScore ) {
-		# home team wins
-		$ladder{$home}{wins}++;
-		$ladder{$home}{points} += 4;
-		$ladder{$away}{losses}++;
-		next;
-	    }
+            if ( $homeScore > $awayScore ) {
+                # home team wins
+                $ladder{$home}{wins}++;
+                $ladder{$home}{points} += 4;
+                $ladder{$away}{losses}++;
+                next;
+            }
 
-	    # FIXME: below code never executes because my results are
-	    # always 20250308 WIN 16 LOS  4 so this never executes.
-	    # I didn't have the points += 2 in the code but it didnt matter
-	    # as code never executes
-	    if ( $homeScore < $awayScore ) {
-		# away team wins
-		$ladder{$home}{losses}++;
-		$ladder{$away}{wins}++;
-		next;
-	    }
+            # FIXME: below code never executes because my results are
+            # always 20250308 WIN 16 LOS  4 so this never executes.
+            # I didn't have the points += 2 in the code but it didnt matter
+            # as code never executes
+            if ( $homeScore < $awayScore ) {
+                # away team wins
+                $ladder{$home}{losses}++;
+                $ladder{$away}{wins}++;
+                next;
+            }
 
-	}
+        }
 
         # AFL byes are zero points and don't get shown in the ladder so
         # there is no support for byes in this program. The NRL ladder.pl
@@ -154,12 +154,12 @@ sub ladderPosition {
     # output: an array of the team names from highest to lowest in the ladder
     my @teams = @AFL::Teams;
     my @sorted = sort { $ladder{$b}{wins} <=> $ladder{$a}{wins}
-			                   ||
-			$ladder{$b}{pct} <=> $ladder{$a}{pct}
+                                           ||
+                        $ladder{$b}{pct} <=> $ladder{$a}{pct}
                                            ||
                         $ladder{$b}{played} <=> $ladder{$a}{played}
-			                   ||
-			               $a cmp $b
+                                           ||
+                                       $a cmp $b
     } @teams;
     # High to low sort, the earlier you are in the @sorted array the better
     # your ladder position. Most wins.. if wins are equal.. better precentage
