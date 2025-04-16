@@ -14,7 +14,6 @@ our ($opt_n);
 
 my $resultsdir = $AFL::RESULTSDIR;
 my %ladder = (); # multidimensional hash to generate the ladder
-my %byethisround = ();
 my $stopRound = 100; # stop after this round
 # $0 -n 2 stops the processing after Round 2 and reports ladder after then
 # with no -n option stopRound is 100 and all results files processed
@@ -31,7 +30,6 @@ foreach (@AFL::Teams) {
     $ladder{$_}{wins}    = 0;
     $ladder{$_}{losses}  = 0;    
     $ladder{$_}{draws}   = 0;    
-    $ladder{$_}{byes}    = 0;
     $ladder{$_}{for}     = 0;
     $ladder{$_}{against} = 0;
     $ladder{$_}{pct}     = 0;
@@ -146,23 +144,10 @@ sub processResultFile {
 
 	}
 
-	# Handle any BYE teams this round. I originally implemented this
-	# as assume every time has a bye and set their bye to 0 once
-	# I detect they've played this week, but then I thought of
-	# split rounds. So I've changed it that a team with a bye is
-	# explicitly mentioned in the
-	# results file with BYE: TEAM1 TEAM2 TEAM3
-
-	# On further consideration BYES might not be such a thing in the AFL
-	# anyhow so if they don't affect the ladder in any way, I'll drop
-	# the code below. As it stands, I haven't put any BYES: lines in
-	# the results.txt AFL files so the below code doesn't execute.
-	if ( $line =~ /BYES:\s+(.*)$/ ) {
-	    my @byeTeams = split /\s+/, $1;
-	    foreach (@byeTeams) {
-		$ladder{$_}{byes}++;
-	    }
-	}
+        # AFL byes are zero points and don't get shown in the ladder so
+        # there is no support for byes in this program. The NRL ladder.pl
+        # shows byes and NRL teams get 2 points for their bye
+        # but there is no need for it in AFL.
 
     }
 }
