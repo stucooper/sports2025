@@ -33,7 +33,6 @@ foreach (@AFL::Teams) {
     $ladder{$_}{for}     = 0;
     $ladder{$_}{against} = 0;
     $ladder{$_}{pct}     = 0;
-#   $ladder{$_}{diff}    = 0; # points diff used in NRL not so much in AFL
     $ladder{$_}{points}  = 0;
 }
 
@@ -109,8 +108,6 @@ sub processResultFile {
 	    $ladder{$away}{against} += $homeScore;
 	    $ladder{$home}{played}++;
 	    $ladder{$away}{played}++;
-	    # $ladder{$home}{diff} += ($homeScore - $awayScore); # NRL
-	    # $ladder{$away}{diff} += ($awayScore - $homeScore); # NRL
 	    $ladder{$home}{pct} = ( $ladder{$home}{for}
 				  / $ladder{$home}{against} ) * 100.0;
 
