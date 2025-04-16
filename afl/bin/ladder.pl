@@ -83,11 +83,11 @@ sub processResultFile {
     my $round = 0;
 
     if ( $file =~ /round0?(\d+).txt/ ) {
-	$round = $1;
-	if ($round > $stopRound) {
-	    return 1;
-	}
-	# print "Using round $round\n";
+        $round = $1;
+        if ($round > $stopRound) {
+            return 1;
+        }
+        # print "Using round $round\n";
     }
     else {
 	die "Cannot figure out round number from filename $file\n";
@@ -101,15 +101,15 @@ sub processResultFile {
 	# print "found line $line\n";
 
 	if ( $line =~ /\d{8}\s+(\w+)\s+(\d+)\s+(\w+)\s+(\d+)/ ) {
-	    my($home,$homeScore,$away,$awayScore) = ($1,$2,$3,$4);
-	    $ladder{$home}{for}     += $homeScore;
-	    $ladder{$home}{against} += $awayScore;
-	    $ladder{$away}{for}     += $awayScore;
-	    $ladder{$away}{against} += $homeScore;
-	    $ladder{$home}{played}++;
-	    $ladder{$away}{played}++;
-	    $ladder{$home}{pct} = ( $ladder{$home}{for}
-				  / $ladder{$home}{against} ) * 100.0;
+            my($home,$homeScore,$away,$awayScore) = ($1,$2,$3,$4);
+            $ladder{$home}{for}     += $homeScore;
+            $ladder{$home}{against} += $awayScore;
+            $ladder{$away}{for}     += $awayScore;
+            $ladder{$away}{against} += $homeScore;
+            $ladder{$home}{played}++;
+            $ladder{$away}{played}++;
+            $ladder{$home}{pct} = ( $ladder{$home}{for}
+                                    / $ladder{$home}{against} ) * 100.0;
 
 	    if ( $homeScore == $awayScore ) {
 		# drawn game: a bit more likely in AFL than NRL
