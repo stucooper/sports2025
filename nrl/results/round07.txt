@@ -1,0 +1,4 @@
+# NRL results round07 Easter
+20250417 STG 20 MAN 18
+20250418 BUL 32 SOU  0
+BYES: NQL
