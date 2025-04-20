@@ -1,12 +1,13 @@
 #!/usr/bin/perl
 use strict;
 use lib "/home/scooper/sports2025/afl/lib";
-use Test::More tests => 4;
+use Test::More;
 # Number of tests: 1 + number of fixtures files
 
 use_ok('AFL');
 
 my $fixturesdir = $AFL::GAMESDIR;
+my $testRuns = 1;
 
 opendir(my $fixturesdirfh, $fixturesdir)
     or die "Cannot open fixturesdir $fixturesdir: $!\n";
@@ -17,7 +18,10 @@ my (@fixturesfiles) = grep{ /\.txt$/ && -f "$fixturesdir/$_" }
 foreach my $file (@fixturesfiles) {
     my $i = processFixturesFile($file);
     is($i, 1, "fixtures file $file clean");
+    $testsRun++;
 }
+
+done_testing($testsRun);
 
 sub processFixturesFile {
     my ($file) = @_;
