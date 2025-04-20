@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 use strict;
 use lib "/home/scooper/sports2025/afl/lib";
-use Test::More tests => 4;
+use Test::More;
 # Number of tests: 1 + number of tips files
 
 # This test is super-close to the 02_fixtures.t tests
@@ -12,6 +12,7 @@ use Test::More tests => 4;
 use_ok('AFL');
 
 my $tipsdir = $AFL::TIPSDIR;
+my $testsRun = 1;
 
 opendir(my $tipsdirfh, $tipsdir)
     or die "Cannot open tipsdir $tipsdir: $!\n";
@@ -22,7 +23,10 @@ my (@tipsfiles) = grep{ /\.txt$/ && -f "$tipsdir/$_" }
 foreach my $file (@tipsfiles) {
     my $i = processTipsFile($file);
     is($i, 1, "tips file $file clean");
+    $testsRun++;
 }
+
+done_testing($testsRun);
 
 sub processTipsFile {
     my ($file) = @_;
