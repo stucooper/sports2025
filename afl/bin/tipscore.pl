@@ -29,6 +29,8 @@ my $stopRound = 100; # arbitrary large number there are never 100 rounds
 # $0 -n 2 stops the processing after Round 2 and reports tipping up to then
 # with no -n option stopRound is 100 and all results files processed
 # $0 -n 2 == "this is what my tipping was like after Round 2 finished"
+# Because of stupid AFL numbering the first Opening Round is Round 0 so
+# the earliest you can stop this is $0 -n 0 when you get the 2 Opening games
 getopts('n:b');
 if (defined $opt_n) {
     $stopRound = $opt_n;
