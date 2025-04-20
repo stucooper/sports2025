@@ -7,7 +7,7 @@ use Test::More;
 use_ok('AFL');
 
 my $fixturesdir = $AFL::GAMESDIR;
-my $testRuns = 1;
+my $testsRun = 1;
 
 opendir(my $fixturesdirfh, $fixturesdir)
     or die "Cannot open fixturesdir $fixturesdir: $!\n";
