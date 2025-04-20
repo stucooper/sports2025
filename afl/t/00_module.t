@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 use strict;
 use lib "/home/scooper/sports2025/afl/lib";
-use Test::More tests => 7;
+use Test::More tests => 8;
 
 # BEGIN {
   use_ok('AFL');
@@ -39,3 +39,9 @@ if ( -d $AFL::TIPSDIR ) {
     $direxists = 1;
 }
 is($direxists, 1, '$AFL::TIPSDIR exists');
+
+$direxists = 0;
+if ( -d $AFL::GAMESDIR ) {
+    $direxists = 1;
+}
+is($direxists, 1, '$AFL::GAMESDIR exists');
