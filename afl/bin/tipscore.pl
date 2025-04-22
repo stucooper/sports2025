@@ -225,8 +225,8 @@ sub processResultFile {
 
 	# Also notice that we set aliveInMin5 to 1 at the top of the program
 	# but we don't re-set it to 1 anywhere else. Once you're dead in Min5
-	# you STAY dead. If you're 4/9 in Round 9 and 9/9 in Round 10 you're
-	# still dead in Min5 since you lost that minigame forever in Round9
+	# you STAY dead. If you're 4/9 in Round 13 and 9/9 in Round 14 you're
+	# still dead in Min5 since you lost that minigame forever in Round13.
     }
 
 
