@@ -179,8 +179,16 @@ sub processResultFile {
     # Gauntlet round. This seems to be the same as the "Knockout" feature
     # in my NRL tipping comp; see the long FIXME in nrl/bin/tipscore.pl
 
-    # Minimum 5 "Min5" Minigame. Starts in Round 1.
+    # Minimum 5 "Min5" Minigame. Starts in Round 11, I'd thought Round 1
     # Correctly tip 5 or more tips per round.
+
+    # WHAT THE ACTUAL?? APPARENTLY MIN5 STARTS IN ROUND11 NOT
+    # ROUND 1. I THOUGHT THE WEBSITE SAID ROUND 1! BUT IT LOOKS LIKE
+    # IT'S BEEN ROUND11 ALL THIS TIME. HERE I AM WASTING TIME AND
+    # ENERGY WORRIED THAT MY 2/6 EASTER TIPS WOULDN'T MIN5 AND BEING
+    # DELIGHTED THAT THEY DID WHEN I FINISHED 5/9 WHEN ALL ALONG MIN5
+    # DOESN'T START UNTIL ROUND 11. I AM ANNOYED ENOUGH AT THIS TO
+    # SHOUT AN ALL-CAPS COMMENT. STOP RUINING MY LIFE, AFL!
 
     # I'm such an addict of tipscore.pl that I run it on weekends
     # in uncompleted rounds... the code below tries to
@@ -198,8 +206,8 @@ sub processResultFile {
     # you're ok but if you're 3 behind with 2 to play, game over.
 
     # Are we dead in min5?
-    if ( $round == 0 ) {
-	# only 2 or 4 games, min5 minigame not on yet
+    if ( $round <= 10 ) {
+	# min5 starts at Round 11 FFS. SEE SHOUTY COMMENT ABOVE
 	;
     }
     else {
