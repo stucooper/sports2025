@@ -40,7 +40,7 @@ if (defined $opt_b) {
 }
 
 # Minimum 5 side-game: Correctly tip 5 or more tips per round
-# starting from Round 01
+# starting from Round 11 (not Round 1 as previously thought!!)
 my $aliveInMin5 = 1;
 
 foreach (@teams) {
