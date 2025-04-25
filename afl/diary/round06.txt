@@ -1,0 +1,34 @@
+ROUND 6
+=======
+
+A hilarious AFL tipping story for this round. In my Perl coding for
+this project I'd gone to a lot of trouble to support the "Min 5" Minigame;
+where if you tip at least 5 winners in a round you're still alive in
+that Minigame. I'd thought from the website that this minigame started
+in Round 1, however closer inspection after the round of the AFL
+tipping website showed that the minigame starts in fact in Round 11!
+I was breathing sighs of relief when my Round 6 tipping went from
+2/6 to 5/9 with a perfect 3/3 on Sunday, keeping me alive (in my mind)
+in the Min 5 Minigame, only to discover that Min 5 doesn't start for
+another 5 rounds!
+
+I was in Newcastle for poker on Easter Monday, the Geelong win over
+Hawthorn pleased me and it was a good game to watch. Richmond and
+Melbourne somehow won games and West Coast got desperately close
+against Essendon, losing 75-77.
+
+NRL was a bit more interesting this week. Bulldogs had a fantastically
+attended match on Good Friday inside the Easter Show, beating Souths
+32-0. Apparently entry tickets were a simple $10, I wish more sport
+did this more regularly. Isn't surge pricing/dynamic pricing supposed
+to work both ways? If they use huge stadiums like Accor Stadium they
+should have a ton of cheap tickets to encourage the stadiums to fill
+up.
+
+Yimmy and I had been at the Royal Easter Show on the Wednesday before
+this round started and the showjumping horses and other horse activity
+has chewed up the Giants Engie stadium a lot. No wonder GWS have to
+play in Canberra and elsewhere for four weeks straight while the Royal
+Easter Show is in town!
+
+
