@@ -1,3 +1,4 @@
 # NRL results round08 Anzac Day
 20250424 BRI 42 BUL 18
+20250425 ROO 46 STG 18
 BYES: PAR
