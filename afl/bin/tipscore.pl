@@ -69,10 +69,19 @@ winningTips: $winningTips
 # run this program on the weekends in uncompleted rounds
 print "This Round: $winningTipsThisRound/$gamesThisRound\n";
 
+# 18 teams.. do the breakdown in three columns six rows
 if ($breakdown) {
+    print "\nTIPPING EFFICIENCY\n";
+    my $col = 0;
     foreach my $t (sort keys %tippingEfficiency) {
-	print "$t $tippingEfficiency{$t}/$gamesPlayed{$t}\n";
+	print "$t $tippingEfficiency{$t}/$gamesPlayed{$t}   ";
+	$col++;
+	if ( $col == 3 ) {
+	    print "\n";
+	    $col = 0;
+	}
     }
+    print "\n";
 }
 
 if ( $aliveInMin5 ) {
