@@ -4,6 +4,14 @@ use lib "/home/scooper/sports2025/nrl/lib";
 use Test::More;
 # Number of tests: 1 + number of results files
 
+# FIXME: Fail a results file if not every time mentioned including
+# any BYES: teams mentioned? (but only if the round is complete, which
+# you could do by saying something like "if BYES: is in the results
+# file, Stuart considers the round complete. That would be a nice
+# heuristic. As I've mentioned elsewhere in comments across the Perl
+# code, I am a compulsive user of tipscore.pl and ladder.pl, including
+# during uncompleted rounds.
+
 use_ok('NRL');
 my $testsRun = 1;
 
@@ -63,5 +71,7 @@ sub processResultsFile {
 	    $teamPlayed{$awayTeam} = 1;
 	}
     }
+    # FIXME: and now check that every team has played? (see block
+    # FIXME comment at the top of the file.
     return 1;
 }
