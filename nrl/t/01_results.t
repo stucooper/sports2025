@@ -21,7 +21,7 @@ opendir(my $resultsdirfh, $resultsdir)
     or die "Cannot open resultsdir $resultsdir: $!\n";
 
 my (@resultsfiles) = grep{ /\.txt$/ && -f "$resultsdir/$_" } 
-                        readdir ($resultsdirfh);
+                        sort readdir ($resultsdirfh);
 
 foreach my $file (@resultsfiles) {
     my $i = processResultsFile($file);
@@ -34,6 +34,7 @@ done_testing($testsRun);
 sub processResultsFile {
     my ($file) = @_;
     my $date = 0;
+    my $allResultsIn = 0;
     my @teams = @NRL::Teams;
     my %teamPlayed;
     foreach (@teams) {
@@ -44,6 +45,7 @@ sub processResultsFile {
 	or die "cannot open $resultsdir/$file: $!\n";
     while (my $line = <$fh>) {
 	chomp($line);
+	next if ($line =~ /^#/ ); # ignore column 1 comments
 	if ( $line =~ /(\d{8})\s+(\w+)\s+\d+\s+(\w+)\s+\d+/ ) {
 	    my ($matchDate, $homeTeam, $awayTeam) = ($1,$2,$3);
 	    if ($matchDate < $date) {
@@ -70,8 +72,29 @@ sub processResultsFile {
 	    $teamPlayed{$homeTeam} = 1;
 	    $teamPlayed{$awayTeam} = 1;
 	}
+	if ( $line =~ /BYES:\s+(.*)$/ ) {
+	    my @byeTeams = split /\s+/, $1;
+
+	    foreach my $byeTeam (@byeTeams) {
+		if ( ! defined($teamPlayed{$byeTeam}) ) {
+		    print STDERR "team error: unknown team $byeTeam\n";
+		    return 0;
+		}
+		$teamPlayed{$byeTeam} = 1;
+	    }
+	    $allResultsIn = 1;
+	}
     }
-    # FIXME: and now check that every team has played? (see block
-    # FIXME comment at the top of the file.
+
+    if ($allResultsIn) {
+	# now check that every team has played
+	foreach (keys %teamPlayed) {
+	    if ( $teamPlayed{$_} == 0 ) {
+		print STDERR "Error: team $_ not played in thisround!\n";
+		return 0;
+	    }
+	}
+    }
+
     return 1;
 }
