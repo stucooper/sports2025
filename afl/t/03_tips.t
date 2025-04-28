@@ -41,6 +41,7 @@ sub processTipsFile {
     while (my $line = <$fh>) {
 	chomp($line);
 	next if ( $line =~ /^#/ ); # column 1 comment line
+	next if ( $line =~ /^GAUNTLET:\s+\w{3}\s*$/ ); # GAUNTLET: HAW
 	# TODO add support for the winning-margin tips line 
 	if ( $line =~ /^(\w+)\s+d\s+(\w+)/ ) {
 	    my ($homeTeam, $awayTeam) = ($1,$2);
