@@ -42,6 +42,15 @@ sub processTipsFile {
 	chomp($line);
 	next if ( $line =~ /^#/ ); # column 1 comment line
 	next if ( $line =~ /^GAUNTLET:\s+\w{3}\s*$/ ); # GAUNTLET: HAW
+	# FIXME: Apply the gauntlet tipping rules in this check
+	# script. Gauntlet starts at Round 7, and you can't tip the
+	# same team twice. I'm buidling support in tipscore.pl here,
+	# but there can also be some similar checks here; although we
+	# can't know just by examining the tips files per se that we
+	# are still alive in the gauntlet competition; that needs the
+	# corresponding results files to be checked which is what
+	# tipscore.pl does of course.
+
 	# TODO add support for the winning-margin tips line 
 	if ( $line =~ /^(\w+)\s+d\s+(\w+)/ ) {
 	    my ($homeTeam, $awayTeam) = ($1,$2);
