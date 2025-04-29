@@ -127,12 +127,13 @@ sub processResultFile {
 
     $gamesThisRound = 0;
     $winningTipsThisRound = 0;
-    
+    my $gauntletTip = 'UNSET';
+
     while (my $line = <$fh>) {
 
 	chomp($line);
 	my ($teamTipped,$tippedToLose);
-	my $gauntletTip;
+
 	# ASSUMPTION: The order of tips is the same as the order
 	# of results.
 	
