@@ -23,6 +23,8 @@ my $winningTips = 0;
 my $winningTipsThisRound = 0;
 my $gamesThisRound = 0;
 my %tippingEfficiency = (); # how good am I at tipping this team?
+use constant GAUNTLET_START_ROUND => 7;
+my %gauntletTipped = (); # have I tipped this team in Gauntlet side-game?
 my %gamesPlayed = ();
 my $breakdown = 0; # report tippingEfficiency results per team
 my $stopRound = 100; # arbitrary large number there are never 100 rounds
@@ -43,9 +45,15 @@ if (defined $opt_b) {
 # starting from Round 11 (not Round 1 as previously thought!!)
 my $aliveInMin5 = 1;
 
+# Gauntlet side game: from Round 7 onwards you pick a Gauntlet team
+# (needs to be unique across the rounds) and that team needs to win
+# for you to stay alive in the Gauntlet competition
+my $gauntletActive = 0;
+
 foreach (@teams) {
     $tippingEfficiency{$_} = 0;
     $gamesPlayed{$_} = 0;
+    $gauntletTipped{$_} = 0;
 }
 
 opendir (my $resultsdirfh, $resultsdir)
@@ -102,6 +110,9 @@ sub processResultFile {
 	    return 1;
 	}
 	# print "Using round $round\n";
+	if ($round >= GAUNTLET_START_ROUND ) {
+	    $gauntletActive = 1;
+	}
     }
     else {
 	die "Cannot figure out round number from filename $file\n";
@@ -144,6 +155,10 @@ sub processResultFile {
 		    # print "you tipped $teamTipped to beat $tippedToLose\n";
 		    # print "result: $line\n";
 		}
+		if ( $tipline =~ /^GAUNTLET:\s+(\w{3})\s*$/ ) {
+		    my $gauntletTip = $1;
+		    print "\nGauntlet tip for Round $round: $gauntletTip\n";
+		}
 	    }
 	    if ( $homePoints == $awayPoints ) {
 		# drawn game, sometimes happens in AFL
@@ -164,6 +179,8 @@ sub processResultFile {
 # But I'm lazily computing it regardless, even if we're not
 # going to report on it.
 # End of $breakdown != 0 comment
+		    # FIXME: if GauntletActive and gauntletTip is
+		    # winner set some variables
 		}
 		next;
 	    }
@@ -174,7 +191,7 @@ sub processResultFile {
 		next;
 	    }
 
-	}
+	} # if $line =~ a results line
     }
 
     print "$winningTipsThisRound/$gamesThisRound\n";
