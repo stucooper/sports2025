@@ -99,6 +99,10 @@ else {
     print "Lost in Min5\n";
 }
 
+if ( $gauntletActive == 1 ) {
+    print "Alive in Gauntlet\n";
+}
+
 sub processResultFile {
     my ($file) = @_;
     my $round = 0;
@@ -159,7 +163,7 @@ sub processResultFile {
 		}
 		if ( $tipline =~ /^GAUNTLET:\s+(\w{3})\s*$/ ) {
 		    $gauntletTip = $1;
-		    print "\nGauntlet tip for Round $round: $gauntletTip\n";
+		    print "..GNT $gauntletTip...";
 		    if ( ! $gauntletActive ) {
 			die "Gauntlet tip found but gauntlet not active\n";
 		    }
@@ -192,17 +196,20 @@ sub processResultFile {
 # But I'm lazily computing it regardless, even if we're not
 # going to report on it.
 # End of $breakdown != 0 comment
-		    # FIXME: if GauntletActive and gauntletTip is
-		    # winner set some variables
-		    if ( $gauntletActive && ( $teamTipped eq $gauntletTip ) ) {
-			print "Gauntlet choice $teamTipped WINS\n";
+		    # if GauntletActive and gauntletTip loses
+		    # set gauntletactive to lost
+		    if ( $gauntletActive && ( $tippedToLose eq $gauntletTip ) ) {
+			$gauntletActive = 0;
 		    }
 		}
 		next;
 	    }
 
 	    if ( $homePoints < $awayPoints ) {
-		# away team wins
+		# NOTREACHED
+		# SHOULD NEVER HAPPEN BECAUSE I PUT MY RESUTS AS
+		# 20250419 ADE  52 GWS  34
+		# So $homePoints >= $awayPoints
 		$winningTips++ if ( $away eq $teamTipped);
 		next;
 	    }
