@@ -24,7 +24,7 @@ my $winningTipsThisRound = 0;
 my $gamesThisRound = 0;
 my %tippingEfficiency = (); # how good am I at tipping this team?
 use constant GAUNTLET_START_ROUND => 7;
-my %gauntletTipped = (); # have I tipped this team in Gauntlet side-game?
+my %gauntletTips = (); # have I tipped this team in Gauntlet side-game?
 my %gamesPlayed = ();
 my $breakdown = 0; # report tippingEfficiency results per team
 my $stopRound = 100; # arbitrary large number there are never 100 rounds
@@ -53,7 +53,7 @@ my $gauntletActive = 0;
 foreach (@teams) {
     $tippingEfficiency{$_} = 0;
     $gamesPlayed{$_} = 0;
-    $gauntletTipped{$_} = 0;
+    $gauntletTips{$_} = 0;
 }
 
 opendir (my $resultsdirfh, $resultsdir)
@@ -110,7 +110,7 @@ sub processResultFile {
 	    return 1;
 	}
 	# print "Using round $round\n";
-	if ($round >= GAUNTLET_START_ROUND ) {
+	if ($round == GAUNTLET_START_ROUND ) {
 	    $gauntletActive = 1;
 	}
     }
@@ -132,6 +132,7 @@ sub processResultFile {
 
 	chomp($line);
 	my ($teamTipped,$tippedToLose);
+	my $gauntletTip;
 	# ASSUMPTION: The order of tips is the same as the order
 	# of results.
 	
@@ -156,8 +157,19 @@ sub processResultFile {
 		    # print "result: $line\n";
 		}
 		if ( $tipline =~ /^GAUNTLET:\s+(\w{3})\s*$/ ) {
-		    my $gauntletTip = $1;
+		    $gauntletTip = $1;
 		    print "\nGauntlet tip for Round $round: $gauntletTip\n";
+		    if ( ! $gauntletActive ) {
+			die "Gauntlet tip found but gauntlet not active\n";
+		    }
+		    # FIXME: die if $gauntletTip already used
+		    my $gtr = $gauntletTips{$gauntletTip};
+		    if ( $gtr != 0 ) {
+			die "your gauntletTip of $gauntletTip was used in round $gtr\n";
+		    }
+		    else {
+			$gauntletTips{$gauntletTip} = $round;
+		    }
 		}
 	    }
 	    if ( $homePoints == $awayPoints ) {
@@ -181,6 +193,9 @@ sub processResultFile {
 # End of $breakdown != 0 comment
 		    # FIXME: if GauntletActive and gauntletTip is
 		    # winner set some variables
+		    if ( $gauntletActive && ( $teamTipped eq $gauntletTip ) ) {
+			print "Gauntlet choice $teamTipped WINS\n";
+		    }
 		}
 		next;
 	    }
