@@ -99,6 +99,11 @@ else {
     print "Lost in Min5\n";
 }
 
+# I'm thinking of making gauntletActive a tri-state variable
+# 0 : not active yet (rounds 0-6)
+# 1 : active and I'm still alive in the minigame
+# -1 : I'm out
+# The main use of this is the message below could say "dead in Gauntlet"
 if ( $gauntletActive == 1 ) {
     print "Alive in Gauntlet\n";
 }
