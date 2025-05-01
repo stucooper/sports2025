@@ -45,11 +45,11 @@ sub processResultsFile {
                 return 0;
 	    }
 	    $date = $matchDate;
-	    if ( ! defined($teamPlayed{$homeTeam}) ) {
+	    if ( ! is_valid_team($homeTeam) ) {
 	     	print STDERR "team error: unknown team $homeTeam\n";
                 return 0;
 	    }
-	    if ( ! defined($teamPlayed{$awayTeam}) ) {
+	    if ( ! is_valid_team($awayTeam) ) {
                 print STDERR "team error: unknown team $awayTeam\n";
                 return 0;
 	    }
