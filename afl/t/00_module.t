@@ -1,11 +1,16 @@
 #!/usr/bin/perl
 use strict;
 use lib "/home/scooper/sports2025/afl/lib";
-use Test::More tests => 8;
+use Test::More tests => 12;
 
-# BEGIN {
-  use_ok('AFL');
-# }
+BEGIN {
+    use_ok('AFL');
+}
+can_ok('AFL', 'is_valid_team');
+
+is(0, is_valid_team('WCE'), 'WCE not valid team');   # bad name I use WCT
+is(0, is_valid_team('COLL'), 'COLL not valid team'); # COL
+is(1, is_valid_team('WBD'), 'WBD is a valid team');
 
 is(18, scalar(@AFL::Teams), '18 teams defined');
 is($AFL::TEAMCOUNT, scalar(@AFL::Teams), '$TEAMCOUNT varaiable correct');
