@@ -38,11 +38,11 @@ sub processFixturesFile {
 	next if ( $line =~ /^#/ ); # column 1 comment line
 	if ( $line =~ /^(\w+)\s+v\s+(\w+)\s*$/ ) {
 	    my ($homeTeam, $awayTeam) = ($1,$2);
-	    if ( ! defined($teamPlayed{$homeTeam}) ) {
+	    if ( ! is_valid_team($homeTeam) ) {
 	     	print STDERR "team error: unknown team $homeTeam\n";
                 return 0;
 	    }
-	    if ( ! defined($teamPlayed{$awayTeam}) ) {
+	    if ( ! is_valid_team($awayTeam) ) {
                 print STDERR "team error: unknown team $awayTeam\n";
                 return 0;
 	    }
