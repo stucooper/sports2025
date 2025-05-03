@@ -12,7 +12,7 @@ use Getopt::Std;
 use lib '/home/scooper/sports2025/afl/lib';
 use AFL;
 
-our ($opt_n, $opt_b);
+our ($opt_n, $opt_b, $opt_g);
 
 my $resultsdir = $AFL::RESULTSDIR;
 my $tipsdir    = $AFL::TIPSDIR;
@@ -27,18 +27,22 @@ use constant GAUNTLET_START_ROUND => 7;
 my %gauntletTips = (); # have I tipped this team in Gauntlet side-game?
 my %gamesPlayed = ();
 my $breakdown = 0; # report tippingEfficiency results per team
+my $show_gauntlet = 0; # -g option
 my $stopRound = 100; # arbitrary large number there are never 100 rounds
 # $0 -n 2 stops the processing after Round 2 and reports tipping up to then
 # with no -n option stopRound is 100 and all results files processed
 # $0 -n 2 == "this is what my tipping was like after Round 2 finished"
 # Because of stupid AFL numbering the first Opening Round is Round 0 so
 # the earliest you can stop this is $0 -n 0 when you get the 2 Opening games
-getopts('n:b');
+getopts('n:bg');
 if (defined $opt_n) {
     $stopRound = $opt_n;
 }
 if (defined $opt_b) {
     $breakdown = 1;
+}
+if (defined $opt_g) {
+    $show_gauntlet = 1;
 }
 
 # Minimum 5 side-game: Correctly tip 5 or more tips per round
@@ -97,6 +101,23 @@ if ( $aliveInMin5 ) {
 }
 else {
     print "Lost in Min5\n";
+}
+
+if ( $show_gauntlet ) {
+    print "\nGAUNTLET TIPS\n";
+    my $col = 0;
+    foreach my $t (sort keys %gauntletTips) {
+	my $display = $gauntletTips{$t};
+	$display = q{ } if ( $display == 0 );
+	$display = sprintf "%2s", $display;
+	print "$t $display   ";
+	$col++;
+	if ( $col == 3 ) {
+	    print "\n";
+	    $col = 0;
+	}
+    }
+    print "\n";
 }
 
 # I'm thinking of making gauntletActive a tri-state variable
@@ -172,7 +193,9 @@ sub processResultFile {
 		}
 		if ( $tipline =~ /^GAUNTLET:\s+(\w{3})\s*$/ ) {
 		    $gauntletTip = $1;
-		    print "..GNT $gauntletTip...";
+		    if ( $show_gauntlet ) {
+			print "..GNT $gauntletTip...";
+		    }
 		    if ( ! $gauntletActive ) {
 			die "Gauntlet tip found but gauntlet not active\n";
 		    }
