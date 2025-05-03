@@ -36,7 +36,7 @@ sub processFixturesFile {
     while (my $line = <$fh>) {
 	chomp($line);
 	next if ( $line =~ /^#/ ); # column 1 comment line
-	if ( $line =~ /^(\w+)\s+v\s+(\w+)\s*$/ ) {
+	if ( $line =~ /^(\w+)\s+[vV]\s+(\w+)\s*$/ ) {
 	    my ($homeTeam, $awayTeam) = ($1,$2);
 	    if ( ! is_valid_team($homeTeam) ) {
 	     	print STDERR "team error: unknown team $homeTeam\n";
