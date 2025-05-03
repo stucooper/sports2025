@@ -176,7 +176,7 @@ sub processResultFile {
 		    if ( ! $gauntletActive ) {
 			die "Gauntlet tip found but gauntlet not active\n";
 		    }
-		    # FIXME: die if $gauntletTip already used
+
 		    my $gtr = $gauntletTips{$gauntletTip};
 		    if ( $gtr != 0 ) {
 			die "your gauntletTip of $gauntletTip was used in round $gtr\n";
