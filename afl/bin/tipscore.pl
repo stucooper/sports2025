@@ -129,6 +129,10 @@ sub processResultFile {
 
     print "processing results file $file..";
 
+    # It seems to me I'm doing this wrong-way-around
+    # Read the tips file first.. this will also tell us
+    # the number of games for this round (we can assume
+    # the tips file is complete).
     open(my $fh, '<', "$resultsdir/$file")
 	or die "cannot open $resultsdir/$file: $!\n";
     open(my $tipfh, '<', "$tipsdir/$file")
@@ -144,7 +148,7 @@ sub processResultFile {
 	my ($teamTipped,$tippedToLose);
 
 	# ASSUMPTION: The order of tips is the same as the order
-	# of results.
+	# of results. But if I read the tipsfiles first this will be moot.
 	
 	if ( $line =~ /\d{8}\s+(\w+)\s+(\d+)\s+(\w+)\s+(\d+)/ ) {
 	    my($home,$homePoints,$away,$awayPoints) = ($1,$2,$3,$4);
