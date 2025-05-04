@@ -2,7 +2,9 @@ GAUNTLET: WBD
 ESS d NOR
 FRE d STK
 WBD d POR
-ADE d CAR
+# I dispute that I tipped Carlton to beat Adelaide but it's
+# what the website said... misclick? Ah well.. gotta go with the website
+CAR d ADE
 COL d GEE
 MEL d WCT
 GWS d SYD
