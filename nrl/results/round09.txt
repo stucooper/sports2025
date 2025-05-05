@@ -7,3 +7,4 @@
 20250504 PEN 32 BRI  8
 # next result Golden Point after extra time.. should I indicate these GP?
 20250504 CAN 20 MEL 18
+BYES: MAN
