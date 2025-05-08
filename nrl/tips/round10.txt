@@ -1,0 +1,8 @@
+RED d PAR
+NEW d GCT
+BRI d SOU
+CAN d BUL
+STG d AUK
+PEN d NQL
+MEL d WTI
+MAN d CRO
