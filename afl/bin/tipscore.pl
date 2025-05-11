@@ -213,6 +213,12 @@ sub processResultFile {
 		# drawn game, sometimes happens in AFL
 		# FIXME: Once there is a drawn game, apply the AFL tipping
 		#        policy to the score.. does a tipper score 1 or 0?
+		# FIXME: The code below scores you 1 for the tip
+		$winningTips++;
+		$winningTipsThisRound++;
+		$tippingEfficiency{$teamTipped}   += 1;
+		$tippingEfficiency{$tippedToLose} += 1;
+		# FIXME: Does a draw kill your GauntletTip?
 		next;
 	    }
 
