@@ -6,3 +6,5 @@
 20250510 ADE  89 POR  84
 20250511 RIC  81 WCT  79
 20250511 GWS 105 GEE 101
+# First draw in the AFL.. does it kill my gauntlet?
+20250511 NOR  71 BRI  71
