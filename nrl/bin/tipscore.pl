@@ -93,8 +93,12 @@ sub processResultFile {
 	    }
 	    if ( $homePoints == $awayPoints ) {
 		# drawn game: less likely in NRL with Golden Point
-		# FIXME: Once there is a drawn game, apply the itipsfooty
-		#        policy to the score.. does a tipper score 1 or 0?
+		# itipsfooty score you a winning tip for a draw
+		# First draw was Round 10 MQL 30 PEN 30
+		$winningTips++;
+		$winningTipsThisRound++;
+		$tippingEfficiency{$teamTipped}   += 1;
+		$tippingEfficiency{$tippedToLose} += 1;
 		next;
 	    }
 
