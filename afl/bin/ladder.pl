@@ -155,6 +155,8 @@ sub ladderPosition {
     my @teams = @AFL::Teams;
     my @sorted = sort { $ladder{$b}{wins} <=> $ladder{$a}{wins}
                                            ||
+                        $ladder{$b}{draws} <=> $ladder{$a}{draws}
+                                           ||
                         $ladder{$b}{pct} <=> $ladder{$a}{pct}
                                            ||
                         $ladder{$b}{played} <=> $ladder{$a}{played}
