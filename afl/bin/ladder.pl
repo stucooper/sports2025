@@ -153,9 +153,11 @@ sub ladderPosition {
     # input: the %ladder hash
     # output: an array of the team names from highest to lowest in the ladder
     my @teams = @AFL::Teams;
-    my @sorted = sort { $ladder{$b}{wins} <=> $ladder{$a}{wins}
-                                           ||
-                        $ladder{$b}{draws} <=> $ladder{$a}{draws}
+    my @sorted = sort { 4*$ladder{$b}{wins}
+                                +
+                        2*$ladder{$b}{draws} <=> 4*$ladder{$a}{wins}
+                                                       +
+			                         2*$ladder{$a}{draws}
                                            ||
                         $ladder{$b}{pct} <=> $ladder{$a}{pct}
                                            ||
@@ -164,10 +166,10 @@ sub ladderPosition {
                                        $a cmp $b
     } @teams;
     # High to low sort, the earlier you are in the @sorted array the better
-    # your ladder position. Most wins.. if wins are equal.. better precentage
-    # if percentage equal (normally when teams haven't played yet)
-    # most games played
-    # if games are equal.. # just do alphabetical prdering.
+    # your ladder position. Most wins.. if wins + draws are equal..
+    # better precentage. if percentage equal (normally when teams
+    # haven't played yet)  most games played
+    # if games are equal.. just do alphabetical prdering.
     # AFL has stupid round00 "Opening" so the ladder in the first few weeks
     # is hardly worth looking at grrrrrr
 
