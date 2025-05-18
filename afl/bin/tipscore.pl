@@ -234,12 +234,14 @@ sub processResultFile {
 # But I'm lazily computing it regardless, even if we're not
 # going to report on it.
 # End of $breakdown != 0 comment
-		    # if GauntletActive and gauntletTip loses
-		    # set gauntletactive to lost
-		    if ( $gauntletActive && ( $tippedToLose eq $gauntletTip ) ) {
+		}
+		if ( $away eq $teamTipped) {
+                    # losing tip; kill the gauntlet if that's your tip
+		    if ( $gauntletActive && ( $away eq $gauntletTip ) ) {
+			# print "lost gauntlet you said $home d $away\n";
 			$gauntletActive = 0;
 		    }
-		}
+                }
 		next;
 	    }
 
