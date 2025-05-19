@@ -263,11 +263,6 @@ sub processResultFile {
     # so my margin score is 36 and gets added to each round. The lower
     # your margin score, the better.
 
-    # TODO: From Round 7, AFL tipping has a "Gauntlet" competition.
-    # Pick a team each round to win, but never the same team in the next
-    # Gauntlet round. This seems to be the same as the "Knockout" feature
-    # in my NRL tipping comp; see the long FIXME in nrl/bin/tipscore.pl
-
     # Minimum 5 "Min5" Minigame. Starts in Round 11, I'd thought Round 1
     # Correctly tip 5 or more tips per round.
 
