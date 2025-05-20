@@ -2,7 +2,7 @@
 POR v CAR
 # Friday
 SYD v WBD
-@ Saturday
+# Saturday
 GCT v MEL
 HAW v NOR
 COL v WCT
