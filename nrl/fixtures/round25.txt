@@ -8,5 +8,5 @@ MAN v RED
 GCT v AUK
 PAR v ROO
 # Sunday
-KNI v BRI
+NEW v BRI
 WTI v NQL
