@@ -1,0 +1,5 @@
+BUL d RED
+MAN d PAR
+PEN d NEW
+CRO d ROO
+AUK d CAN
