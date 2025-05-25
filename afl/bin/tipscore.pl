@@ -210,15 +210,14 @@ sub processResultFile {
 		}
 	    }
 	    if ( $homePoints == $awayPoints ) {
-		# drawn game, sometimes happens in AFL
-		# FIXME: Once there is a drawn game, apply the AFL tipping
-		#        policy to the score.. does a tipper score 1 or 0?
-		# FIXME: The code below scores you 1 for the tip
+		# drawn game.
+		# The AFL tipping competition awards 1 for a drawn tip
 		$winningTips++;
 		$winningTipsThisRound++;
 		$tippingEfficiency{$teamTipped}   += 1;
 		$tippingEfficiency{$tippedToLose} += 1;
-		# FIXME: Does a draw kill your GauntletTip?
+		# Note: a draw does not kill your GauntletTip.
+		# (Round 9 Brisbane v North drawn)
 		next;
 	    }
 
