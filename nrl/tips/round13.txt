@@ -1,0 +1,7 @@
+STG d NEW
+MEL d GCT
+NQL d WTI
+BRI d MAN
+SOU d AUK
+PEN d PAR
+CAN d ROO
