@@ -98,6 +98,7 @@ sub processResultFile {
         or die "cannot open $resultsdir/$file: $!\n";
     while (my $line = <$fh>) {
         chomp($line);
+	next if ($line =~ /^#/);
         # print "found line $line\n";
 
         if ( $line =~ /\d{8}\s+(\w+)\s+(\d+)\s+(\w+)\s+(\d+)/ ) {
