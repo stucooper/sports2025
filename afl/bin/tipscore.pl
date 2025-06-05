@@ -1,9 +1,8 @@
 #!/usr/bin/perl
 # Generate my tipping score, using the results/ and tips/ files
-# The tipping comp I am in is Official AFL tipping and has several
-# side-games on top of straight up tipping, I will add support for
-# them if I can; there are comments at the bottom of the file about
-# the side-game features
+# The tipping comp I am in is Official AFL tipping and has two
+# side-games on top of straight up tipping. There are called Gauntlet
+# and Min5.
 
 use strict;
 use warnings;
