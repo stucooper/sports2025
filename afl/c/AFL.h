@@ -24,8 +24,8 @@ char *teams[TEAMCOUNT] = {
   "RIC",
   "STK",
   "SYD",
-  "WCT",
-  "WBD"  /* does this need a , at the end? I like one but I think */
+  "WBD",
+  "WCT"  /* does this need a , at the end? I like one but I think */
 	 /*  standards say no */
 
 };
