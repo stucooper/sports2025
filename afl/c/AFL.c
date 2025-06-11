@@ -38,4 +38,5 @@ int main (int argc, char *argv[]) {
     printf("Cannot open directory %s\n", "/directory/not/there");
   }
 
+  return(0);
 }
