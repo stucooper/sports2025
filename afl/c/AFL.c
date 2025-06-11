@@ -12,7 +12,7 @@ int main (int argc, char *argv[]) {
   printf("There are %d teams in the AFL\n", i);
   i = is_valid_team("FREM");
   printf("is FREM valid?: %d\n", i);
-  i = is_valid_team("CAR");
+  i = is_valid_team("FRE");
   printf("is CAR valid?: %d\n", i);
   i = is_valid_team("XYZ");
   printf("is XYZ valid?: %d\n", i);
