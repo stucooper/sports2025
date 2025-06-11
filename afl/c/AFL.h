@@ -4,6 +4,8 @@
 #define TIPSDIR    "/home/scooper/sports2025/afl/tips"
 #define GAMESDIR   "/home/scooper/sports2025/afl/fixtures"
 
+int is_valid_team(char *team);
+
 /* char *teams[] = { */
 char *teams[TEAMCOUNT] = {
   "ADE",
