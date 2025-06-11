@@ -19,7 +19,9 @@ char *teams[] = {
   "STK",
   "SYD",
   "WCT",
-  "WBD",
+  "WBD"  /* does this need a , at the end? I like one but I think */
+	 /*  standards say no */
+
 };
 
 int is_valid_team (char *team) {
