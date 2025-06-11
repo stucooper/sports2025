@@ -1,7 +1,7 @@
 #include "AFL.h"
 
 int is_valid_team (char *team) {
-  int i,valid,len;
+  int i,len;
   
   len = strlen(team);
   if ( len != 3 ) {
