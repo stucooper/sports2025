@@ -1,7 +1,11 @@
 #include <string.h>
 #define TEAMCOUNT 18 /* Number of teams in the competition */
+#define RESULTSDIR /home/scooper/sports2025/afl/results
+#define TIPSDIR    /home/scooper/sports2025/afl/tips
+#define GAMESDIR   /home/scooper/sports2025/afl/fixtures
 
-char *teams[] = {
+/* char *teams[] = { */
+char *teams[TEAMCOUNT] = {
   "ADE",
   "BRI",
   "CAR",
