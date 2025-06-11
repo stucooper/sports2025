@@ -1,7 +1,5 @@
 #include "AFL.h"
 
-// extern char *teams[18];
-
 int is_valid_team (char *team) {
   int i,valid,len;
   
