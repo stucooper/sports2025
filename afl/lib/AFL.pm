@@ -9,7 +9,7 @@ use Exporter 'import';
     GEE GCT GWS
     HAW MEL NOR
     POR RIC STK
-    SYD WCT WBD
+    SYD WBD WCT
     );
 
 sub is_valid_team {
