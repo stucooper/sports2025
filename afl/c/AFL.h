@@ -5,6 +5,7 @@
 #define GAMESDIR   "/home/scooper/sports2025/afl/fixtures"
 
 int is_valid_team(char *team);
+int read_tipline(char *line, char *tippedToWin, char *tippedToLost);
 
 /* static char *teams[] = { */
 static char *teams[TEAMCOUNT] = {
