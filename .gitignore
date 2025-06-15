@@ -1,2 +1,3 @@
 afl/c/AFL
-afl/c/valid_team.o
+afl/c/main_read_tipline
+afl/c/*.o
