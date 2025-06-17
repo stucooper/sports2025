@@ -7,7 +7,7 @@ int read_tipline(char *line, char *tippedToWin, char *tippedToLose) {
 	    -1 if an invalid tip line
   */
 
-  char toWin[4];  /* sscanf needs room for \8 so [4] for a 3-wide teamname */
+  char toWin[4];  /* sscanf needs room for '\0' so [4] for a 3-wide teamname */
   char toLose[4];
   char isD;
 
