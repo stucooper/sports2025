@@ -1,0 +1,6 @@
+CAN d WTI
+AUK d PEN
+RED d NEW
+MEL d SOU
+CRO d BRI
+PAR d GCT
