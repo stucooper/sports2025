@@ -18,8 +18,8 @@ int read_tipline(char *line, char *tippedToWin, char *tippedToLose) {
   /* "GWS d BRI" */
   if ( strlen(line) != 9 ) { return -1; }
   if ( sscanf(line, "%s %c %s",toWin,&isD,toLose) != 3 ) { return -1; }
-  /* TODO: allow for d or D in a tipline */
-  if ( isD != 'd' ) { return -1; }
+  /* we allow for d or D in a tipline */
+  if ( ( isD != 'd' ) && ( isD != 'D' ) ) { return -1; }
   strncpy(tippedToWin, toWin, 4);
   strncpy(tippedToLose, toLose, 4);  
   return 1;
