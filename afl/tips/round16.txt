@@ -1,0 +1,7 @@
+POR d CAR
+WBD d SYD
+GCT d MEL
+HAW d NOR
+COL d WCT
+ADE d RIC
+FRE d STK
