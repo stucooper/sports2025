@@ -90,7 +90,7 @@ sub processResultsFile {
 
 	foreach (keys %teamPlayed) {
 	    if ( $teamPlayed{$_} == 0 ) {
-		print STDERR "Error: team $_ not played in thisround!\n";
+		print STDERR "Error: team $_ not played in this round!\n";
 		return 0;
 	    }
 	}
