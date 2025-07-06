@@ -73,6 +73,10 @@ sub processResultsFile {
 		    print STDERR "team error: unknown team $byeTeam\n";
 		    return 0;
 		}
+		if ( $teamPlayed{$byeTeam} == 1 ) {
+		    print STDERR "error: bye team $byeTeam already played?\n";
+		    return 0;
+		}
 		$teamPlayed{$byeTeam} = 1;
 	    }
 	    $allResultsIn = 1;
