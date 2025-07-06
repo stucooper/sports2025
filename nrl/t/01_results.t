@@ -84,17 +84,16 @@ sub processResultsFile {
     }
 
     if ($allResultsIn) {
-	# Fail a results file if not every tean is mentioned including
+	# Fail a results file if not every team is mentioned including
 	# any BYES: teams. (but only if the round is complete.
 	# A round is considered complente if there is a BYES: line at
 	# the bottom. As I've mentioned elsewhere in comments across
 	# the Perl code, I am a compulsive user of tipscore.pl and
-	# ladder.pl, including during uncompleted rounds.
-
+	# ladder.pl and will use these programs on incomplete rounds
 
 	foreach (keys %teamPlayed) {
 	    if ( $teamPlayed{$_} == 0 ) {
-		print STDERR "Error: team $_ not played in this round!\n";
+		print STDERR "Error: team $_ not played/byed this round!\n";
 		return 0;
 	    }
 	}
