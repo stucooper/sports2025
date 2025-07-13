@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 use strict;
 use lib "/home/scooper/sports2025/nrl/lib";
-use Test::More tests => 3;
+use Test::More tests => 7;
 
 use_ok('NRL');
 can_ok('NRL', 'is_valid_team');
