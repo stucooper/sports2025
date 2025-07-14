@@ -38,16 +38,16 @@ foreach my $file (@resultsfiles) {
     processResultFile($file);
 }
 
+# This line is needed because I'm a tipscore.pl addict and
+# run this program on the weekends in uncompleted rounds
+# print "This Round: $winningTipsThisRound/$gamesThisRound\n";
+
 print "
 totalGames:  $totalGames
 winningTips: $winningTips
 ";
 my $tipPercentage = $winningTips * 100 / $totalGames;
 printf("%.2f%%\n", $tipPercentage);
-
-# This line is needed because I'm a tipscore.pl addict and
-# run this program on the weekends in uncompleted rounds
-print "This Round: $winningTipsThisRound/$gamesThisRound\n";
 
 if ($breakdown) {
     foreach my $t (sort keys %tippingEfficiency) {
