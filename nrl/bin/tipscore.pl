@@ -12,6 +12,12 @@ my $resultsdir = $NRL::RESULTSDIR;
 my $tipsdir    = $NRL::TIPSDIR;
 my @teams      = @NRL::Teams;
 
+# iTipFooty awards 2 bonus points for perfect tipped round. One day
+# when I have a lot of time I'll implenet that feature, for now I'm
+# just hard coding the number of bonus points I've got and I'll change
+# the source code if I get more.
+my $BONUS_POINTS = 2;
+my $iTipFootyScore = 0;
 my $totalGames  = 0;
 my $winningTips = 0;
 my $winningTipsThisRound = 0;
@@ -42,9 +48,11 @@ foreach my $file (@resultsfiles) {
 # run this program on the weekends in uncompleted rounds
 # print "This Round: $winningTipsThisRound/$gamesThisRound\n";
 
+$iTipFootyScore = $winningTips + $BONUS_POINTS;
 print "
 totalGames:  $totalGames
 winningTips: $winningTips
+iTipFooty:   $iTipFootyScore
 ";
 my $tipPercentage = $winningTips * 100 / $totalGames;
 printf("%.2f%%\n", $tipPercentage);
