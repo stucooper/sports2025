@@ -1,0 +1,8 @@
+BUL -2.5
+MAN -5.5
+NEW +9.5
+BRI -5.5
+PAR +2.5
+RED -4.5
+CRO +9.5
+GCT +3.5
