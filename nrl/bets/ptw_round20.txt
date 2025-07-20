@@ -1,0 +1,8 @@
+RED -5.5
+CRO -2.5
+PEN -13.5
+CAN -11.5
+STG +8.5
+MEL -8.5
+WTI -5.5
+AUK -6.5
