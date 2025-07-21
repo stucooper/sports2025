@@ -9,6 +9,11 @@ use NRL;
 # we know them. A single argument filename is given which must be of
 # the form ptw_roundNN.txt (use 05 for round 5).
 
+# THIS PROGRAM SHOULD BE IDENTICAL TO afl/bin/ptwscore.pl except for
+# using NRL.pm and /nrl/lib, /nrl/results directories not /afl/lib
+# /afl/results directories. Diff the two programs after making
+# changes.
+
 my $betfile = $ARGV[0];
 my $round;
 
