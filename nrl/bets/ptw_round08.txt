@@ -1,0 +1,8 @@
+BRI +5.5
+ROO -1.5
+AUK -9.5
+SOU +15.5
+NQL -6.5
+PEN -7.5
+CAN -4.5
+WTI +7.5
