@@ -1,0 +1,15 @@
+Filename ptw_roundNN.txt are records of Pick the Winners (ptw) bets.
+There is a script nrl/bin/ptwscore.pl that "scores" the ptw bets
+against the results; showing the pick the winner selection, the score,
+the adjusted score with the points start added or subtracted, and the
+running tally of our ptw score for this round.
+
+Best result so far was Round 8 a heartbreak 7/8. According to the TAB
+website, Pick the Winners paid $158 for the correct 8/8. 2^8 is $256
+so it's not possible to box 8 selections and make a profit.
+
+Files called roundNN.txt are freeform text descriptions of my betting
+for the round.
+
+I might add extra bets (from the paper notebook) into this directory
+and write new betchecking programs; it's all good programming practice.
