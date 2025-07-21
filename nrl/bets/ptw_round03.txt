@@ -1,0 +1,8 @@
+MEL -8.5
+ROO +1.5
+NQL +15.5
+SOU +14.5
+RED +1.5
+GCT +1.5
+BUL -6.5
+MAN -5.5
