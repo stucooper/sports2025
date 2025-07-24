@@ -12,7 +12,8 @@ use AFL;
 # THIS PROGRAM SHOULD BE IDENTICAL TO nrl/bin/ptwscore.pl except for
 # using AFL.pm and /afl/lib, /afl/results directories not /nrl/lib
 # /nrl/results directories. Diff the two programs after making
-# changes.
+# changes. ptwscore is more important for NRL so the primary version
+# that changes first will be nrl/bin/ptwscore.pl
 
 my $betfile = $ARGV[0];
 my $round;
@@ -61,7 +62,16 @@ while ( my $betline = <$betfh> ) {
     }
     print "Game $gamenum: $betline\n";
     # Find the result of this game, see REQUIREMENT
-    chomp(my $resultline = <$resultfh>);
+    my $resultline = <$resultfh>;
+
+    # If we are running on a partial results file (eg Saturday morning
+    # and only 3 games have been played and we just want to see we're
+    # 3/3 so far) then $resultline will be undefined. Exit the program
+    # with a suitable message.
+    if (not defined ($resultline)) {
+	die "No More results; more to come later.\n";
+    }
+    chomp($resultline);
     # I could regexp the resultline but stuff it I'll simply use split
     my ($t1, $t1score, $t2, $t2score);
     my %adjscore;
