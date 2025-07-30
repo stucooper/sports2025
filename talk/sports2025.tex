@@ -14,6 +14,8 @@
 
 This talk is a demonstration of my sports2025 suite of programs to
 follow AFL (Australian Football) and NRL (Rugby League) in 2025.
+The code is on a public repository at
+https://github.com/stucooper/sports2025.git
 
 \section{Goals}
 
@@ -21,12 +23,31 @@ follow AFL (Australian Football) and NRL (Rugby League) in 2025.
   \item Good practice using Perl
   \item Produce Football ladders and tipping results on demand
   \item Be an electronic version of my physical A4 ``Sportsbook''
+  \item Enhance my enjoyment and engagement with footy
   \item Be extensible with new languages and methodologies
   \item A new version each year with improved code
   \item Other sports can be added with some effort and understanding
 \end{itemize}
 
-\section{AFL teams}
+\section{Three letter team codes}
+
+An early challenge for the project was coming up with unique
+three-letter codes for each team in both types of footy.
+
+World soccer has a standard list of 211 (when I checked) three-letter
+country codes (``trigrams'' or ``trigraphs'') to represent countries
+and member federations. When Sweden play Denmark the game is
+SWE/DEN and the unused letters of the countries are (DEN)/(MARK).
+
+The C language had trigraphs for keyboards that couldn't type exotic
+characters like \{, \} and even \textbackslash\ itself. These
+trigraphs are \verb!??=, ??>! and \verb!??/! respectively.
+
+My trigraphs, especially in NRL, are Stuart-friendly; I'm the only one
+who needs to understand them so I use names that make the most sense
+to me. Hooray for personal projects!
+
+\subsection{AFL teams}
 
 There are eighteen teams; ten in Melbourne, two each in Sydney, Brisbane,
 Adelaide and Perth. A full round of football games has one game
@@ -38,7 +59,18 @@ Each of the 18 teams have a unique three letter name. Testing scripts
 ensure that the names entered for fixtures, results and tips files are
 consistent.
 
-\section{NRL teams}
+In the next five years there could be a new team, Tasmania, join the
+competition although there are significant political and financial
+obstacles to be overcome.
+
+Historically AFL clubs have avoided mergers. Sadly pressure in 1999 to
+merge the Melbourne Demons (``Dees'') and Hawthorn (``Hawks ``)
+failed; if that merger went ahead we would have had the ``Dorks''.
+Two underperforming Melbourne clubs have re-located; the South
+Melbourne Swans were sent to Sydney in the 1980s and the Fitzroy Lions
+went to Brisbane in the 1990s.
+
+\subsection{NRL teams}
 
 There are seventeen teams; one in Melbourne, many in New South Wales
 and four in Queensland. Most of the teams are known just as strongly
@@ -70,9 +102,8 @@ Perth Bears (PER) and New Guinea (PNG).
 The name checking testing scripts bomb out a lot more for my NRL files
 than they do for my AFL files.
 
-World soccer has a standard list of 211 (when I checked) three-letter
-country codes (``trigrams'' or ``trigraphs'') to represent countries
-and member federations. When Sweden play Denmark the game is
-SWE/DEN and the unused letters pf the countries are (DEN)/(MARK).
+NRL rounds are typically one game Thursday night, two games Friday
+night, three games Saturday and two games Sunday. Like the AFL games
+are played on special occasions like Anzac Day and holiday Mondays.
 
 \end{document}               % End of document.
