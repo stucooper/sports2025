@@ -2,13 +2,24 @@
 use strict;
 use warnings;
 
+use Getopt::Std;
 use lib '/home/scooper/sports2025/nrl/lib';
 use NRL;
+
+our ($opt_n);
 
 # Produce the NRL ladder, from information in the results.txt files
 my $resultsdir = $NRL::RESULTSDIR;
 my %ladder = (); # multidimensional hash to generate the ladder
 my %byethisround = ();
+my $stopRound = 100; # stop after this round
+# $0 -n 2 stops the processing after Round 2 and reports ladder after then
+# with no -n option stopRound is 100 and all results files processed
+# $0 -n 2 == "this is what the ladder looked like after Round 2 finished"
+getopts('n:');
+if (defined $opt_n) {
+    $stopRound = $opt_n;
+}
 
 # can probably do the next foreach with a map but will foreach it for now
 foreach (@NRL::Teams) {
@@ -58,6 +69,19 @@ foreach (@ladderTeams) {
 
 sub processResultFile {
     my ($file) = @_;
+    my $round = 0;
+
+    if ( $file =~ /round0?(\d+).txt/ ) {
+        $round = $1;
+        if ($round > $stopRound) {
+            return 1;
+        }
+        # print "Using round $round\n";
+    }
+    else {
+        die "Cannot figure out round number from filename $file\n";
+    }
+
     print "processing results file $file\n";    
     open(my $fh, '<', "$resultsdir/$file")
 	or die "cannot open $resultsdir/$file: $!\n";
