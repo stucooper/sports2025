@@ -107,4 +107,62 @@ NRL rounds are typically one game Thursday night, two games Friday
 night, three games Saturday and two games Sunday. Like the AFL games
 are played on special occasions like Anzac Day and holiday Mondays.
 
+\section{Evolution}
+
+The first program was ladder.pl; to produce the competition ladder for
+each of AFL and NRL. It uses just the results files.
+
+Because of AFL Round 0\footnote{Round Zero has just four games, home
+games for the four Sydney and Brisbane teams, to promote
+Aussie Rules in NSW and QLD.  AFL fans \emph{hate}
+Round Zero. In 2025 Cyclone Alfred made the AFL call off the
+Brisbane games and there were just two lacklustre Sydney games.
+In 2024 the AFL's most hated team, Collingwood, had lost 4 games by
+the end of Round 3.} the AFL is numerically one round behind the NRL;
+in the July/August weekend we had NRL Round 22 and AFL Round 21.
+
+\begin{verbatim}
+# NRL Round 22
+20250731 MEL 16 PAR 10
+20250801 RED 20 AUK 18
+20250801 BRI 60 SOU 14
+... more games unshown ...
+\end{verbatim}
+
+\begin{verbatim}
+@ AFL Round 21
+20250731 WBD 132 GWS  44
+20250801 ADE 101 HAW  87
+... more games unshown ...
+\end{verbatim}
+
+ladder.pl has a StopRound -n argument to show what the ladder was
+after that round. Here is the NRL ladder after Round 21.
+
+\begin{verbatim}
+/home/scooper/sports2025/nrl/bin: ./ladder.pl -n 21
+... output snipped ...
+processing results file round21.txt
+Pos TEAM  P  W  D  L  B   F    A   +- Pts
+  1 CAN  19 16  0   3 2  546  388  158 36
+  2 BUL  18 14  0   4 3  428  292  136 34
+  3 MEL  18 13  0   5 3  567  345  222 32
+  4 AUK  18 12  0   6 3  391  363   28 30
+  5 PEN  18 10  1   7 3  420  341   79 27
+  6 BRI  18 10  0   8 3  466  388   78 26
+  7 CRO  19 11  0   8 2  435  412   23 26
+  8 RED  18  9  0   9 3  533  364  169 24
+=========================================
+  9 MAN  18  9  0   9 3  402  380   22 24
+ 10 ROO  18  8  0  10 3  451  447    4 22
+ 11 NQL  19  7  1  11 2  406  563 -157 19
+ 12 STG  18  6  0  12 3  404  468  -64 18
+ 13 WTI  19  7  0  12 2  357  492 -135 18
+ 14 PAR  18  6  0  12 3  335  482 -147 18
+ 15 NEW  19  6  0  13 2  284  400 -116 16
+ 16 GCT  18  5  0  13 3  370  519 -149 16
+ 17 SOU  19  6  0  13 2  327  478 -151 16
+/home/scooper/sports2025/nrl/bin:
+\end{verbatim}
+
 \end{document}               % End of document.
