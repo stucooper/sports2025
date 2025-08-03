@@ -107,10 +107,11 @@ NRL rounds are typically one game Thursday night, two games Friday
 night, three games Saturday and two games Sunday. Like the AFL games
 are played on special occasions like Anzac Day and holiday Mondays.
 
-\section{Evolution}
+\section{ladder.pl}
 
-The first program was ladder.pl; to produce the competition ladder for
-each of AFL and NRL. It uses just the results files.
+The first program written was ladder.pl. There is an NRL version and
+an AFL version; with minimum differences but still a few because the
+ladders are calculated differently.
 
 Because of AFL Round 0\footnote{Round Zero has just four games, home
 games for the four Sydney and Brisbane teams, to promote
@@ -124,17 +125,15 @@ in the July/August weekend we had NRL Round 22 and AFL Round 21.
 \begin{verbatim}
 # NRL Round 22
 20250731 MEL 16 PAR 10
-20250801 RED 20 AUK 18
-20250801 BRI 60 SOU 14
 ... more games unshown ...
+20250803 CRO 32 NQL 12
+BYES: NEW
 \end{verbatim}
 
-\begin{verbatim}
-# AFL Round 21
-20250731 WBD 132 GWS  44
-20250801 ADE 101 HAW  87
-... more games unshown ...
-\end{verbatim}
+In the NRL scoring system a team with a week off (the ``Bye'') scores
+2 competition points that round, the same as if they had played and
+won. So the NRL results files finish with the team(s) that had the bye
+that week.
 
 ladder.pl has a StopRound -n argument to show what the ladder was
 after that round. Here is the NRL ladder after Round 21.
