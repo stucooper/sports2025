@@ -164,4 +164,78 @@ Pos TEAM  P  W  D  L  B   F    A   +- Pts
 /home/scooper/sports2025/nrl/bin:
 \end{verbatim}
 
+\section{tipscore.pl}
+
+The second program of the suite is tipscore.pl; a program that scores
+my tipping in both NRL and AFL. Office tipping competitions are a fun
+feature of corporate life and for those of us not in a corporate job
+it's easy to find other tipping competitions to take part in.
+
+Because footy is now played Thursday to Sunday not Friday to Sunday
+the ``get your tips in by Friday COB'' no longer applies; it's also
+annoying for people in pub tipping competitions who need to visit the
+pub or otherwise get their tips in on Thursday nights not Friday
+nights.
+
+tipping.pl uses the results/round*.txt and tips/round*.txt files. The
+tips need to be in the same order as the games otherwise it won't
+work. Again there's a -n StopRound flag; here is my AFL tipping by the
+end of Round 1
+
+\begin{verbatim}
+/home/scooper/sports2025/afl: cat results/round0[01].txt
+# Two Queensland games postponed Cyclone Alfred
+# Friday
+20250307 HAW  96 SYD  76
+# Sunday
+20250309 GWS 104 COL  52
+20250313 RIC  82 CAR  69
+20250314 HAW 111 ESS  85
+20250315 GEE 147 FRE  69
+20250315 BRI  86 SYD  82
+20250315 WBD 113 NOR  97
+20250315 COL 136 POR  45
+20250316 ADE 135 STK  72
+20250316 GWS  77 MEL  74
+20250316 GCT 136 WCT  49
+/home/scooper/sports2025/afl: cat tips/round0[01].txt
+SYD d HAW 16
+COL d GWS
+CAR d RIC 33
+HAW d ESS
+GEE d FRE
+SYD d BRI
+WBD d NOR
+COL d POR
+ADE d STK
+GWS d MEL
+WCT d GCT
+/home/scooper/sports2025/afl: ./bin/tipscore.pl -n 1
+processing results file round00.txt..0/2
+processing results file round01.txt..6/9
+
+totalGames:  11
+winningTips: 6
+54.55%
+Still alive in Min5
+/home/scooper/sports2025/afl: ./bin/tipscore.pl -n 1 -b
+processing results file round00.txt..0/2
+processing results file round01.txt..6/9
+
+totalGames:  11
+winningTips: 6
+54.55%
+
+TIPPING EFFICIENCY
+ADE 1/1   BRI 0/1   CAR 0/1
+COL 1/2   ESS 1/1   FRE 1/1
+GCT 0/1   GEE 1/1   GWS 1/2
+HAW 1/2   MEL 1/1   NOR 1/1
+POR 1/1   RIC 0/1   STK 1/1
+SYD 0/2   WBD 1/1   WCT 0/1
+
+Still alive in Min5
+/home/scooper/sports2025/afl:
+\end{verbatim}
+
 \end{document}               % End of document.
