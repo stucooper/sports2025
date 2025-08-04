@@ -164,6 +164,36 @@ Pos TEAM  P  W  D  L  B   F    A   +- Pts
 /home/scooper/sports2025/nrl/bin:
 \end{verbatim}
 
+\subsection{Code Highlights}
+
+There's two powerful snippets of code worth sharing in this printout:
+
+Get the resultsfiles (in sorted order) and process each one:
+\begin{verbatim}
+opendir (my $resultsdirfh, $resultsdir)
+    or die "cannot open $resultsdir: $!\n";
+
+my @resultsfiles = grep { /.txt$/ } sort readdir $resultsdirfh;
+
+foreach my $file (@resultsfiles) {
+    processResultFile($file);
+}
+
+\end{verbatim}
+
+Now that the \%ladder structure has the information for each team,
+sort it
+
+\begin{verbatim}
+my @teams = @NRL::Teams;
+my @sorted = sort { $ladder{$b}{points} <=> $ladder{$a}{points}
+                                         ||
+                      $ladder{$b}{diff} <=> $ladder{$a}{diff}
+                                         ||
+                                     $a cmp $b
+    } @teams;
+\end{verbatim}
+
 \section{tipscore.pl}
 
 The second program of the suite is tipscore.pl; a program that scores
