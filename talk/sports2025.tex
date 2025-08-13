@@ -268,4 +268,52 @@ Still alive in Min5
 /home/scooper/sports2025/afl:
 \end{verbatim}
 
+\section{ptwscore.pl}
+
+The final program scores a ``Pick the Winners'' bet. Pick the Winners
+is a longstanding bet in NRL under the ``Footy TAB'' banner. Each
+match has the team expected to lose given a points start to try to
+even things up. If that team loses, but wins once the point start is
+applied, they win for the purposes of Pick the Winners.
+
+I won't show code, I'll just demonstrate the program in action.
+
+\begin{verbatim}
+home/scooper/sports2025/nrl/bets: cat ptw_round20.txt
+RED -5.5
+CRO -2.5
+PEN -13.5
+CAN -11.5
+STG +8.5
+MEL -8.5
+WTI -5.5
+AUK -6.5
+/home/scooper/sports2025/nrl/bets: ../bin/ptwscore.pl ptw_round20.txt
+Scoring Pick the Winners for Round 20
+Game 1: RED -5.5
+20250717 RED 43 NQL 24  adjusted RED 37.5 NQL 24
+1/1
+Game 2: CRO -2.5
+20250718 CRO 31 ROO 18  adjusted CRO 28.5 ROO 18
+2/2
+Game 3: PEN -13.5
+20250718 PEN 30 SOU 10  adjusted PEN 16.5 SOU 10
+3/3
+Game 4: CAN -11.5
+20250719 CAN 40 PAR 16  adjusted CAN 28.5 PAR 16
+4/4
+Game 5: STG +8.5
+20250719 BUL 20 STG 18  adjusted STG 26.5 BUL 20
+5/5
+Game 6: MEL -8.5
+20250719 MAN 18 MEL 16  adjusted MEL 7.5 MAN 18
+5/6
+Game 7: WTI -5.5
+20250720 WTI 21 GCT 20  adjusted WTI 15.5 GCT 20
+5/7
+Game 8: AUK -6.5
+20250720 AUK 20 NEW 15  adjusted AUK 13.5 NEW 15
+5/8
+\end{verbatim}
+
 \end{document}               % End of document.
