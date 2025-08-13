@@ -31,11 +31,11 @@ else {
     die "ptw file needs to be called ptw_roundNN.txt";
 }
 
-print "Checking Pick the Winners for Round $round\n";
+print "Scoring Pick the Winners for Round $round\n";
 open (my $betfh, '<', $betfile)
     or die "cannot open betfile $betfile: $!\n";
 
-print "Finding results file for round $round\n";
+# print "Finding results file for round $round\n";
 open (my $resultfh, '<', "$NRL::RESULTSDIR/round${round}.txt")
     or die "Cannot find results file for round $round\n";
 
@@ -91,7 +91,7 @@ while ( my $betline = <$betfh> ) {
     else {
 	die "Error: resultline $resultline does not contain $teamPicked\n";
     }
-    print "$resultline\n";
+    print "$resultline  ";
     print "adjusted $teamPicked $winScore $otherTeam $loseScore\n";
     $correct++ if ($winScore > $loseScore);
     print "$correct/$gamenum\n";
