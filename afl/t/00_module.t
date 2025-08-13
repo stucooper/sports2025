@@ -32,7 +32,6 @@ foreach my $team (@AFL::Teams) {
 }
 is($all_teams_present, 1, "All teams have a .txt file");
 
-# TODO: Add some tests to check that TIPSDIR and RESULTSDIR exist as dirs
 my $direxists = 0;
 if ( -d $AFL::RESULTSDIR ) {
     $direxists = 1;
