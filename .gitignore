@@ -1,7 +1,11 @@
 afl/c/AFL
 afl/c/main_read_tipline
 afl/c/*.o
+afl/bad/
 talk/*.aux
 talk/*.dvi
 talk/*.log
 talk/*.pdf
+talk/makeit
+talk/world
+talkbin/*
