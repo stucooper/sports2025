@@ -209,8 +209,8 @@ nights.
 
 tipping.pl uses the results/round*.txt and tips/round*.txt files. The
 tips need to be in the same order as the games otherwise it won't
-work. Again there's a -n StopRound flag; here is my AFL tipping by the
-end of Round 1
+work. Again there's a -n StopRound flag. A -b ``breakdown'' flag shows
+my tipping efficiency for each team.
 
 \begin{verbatim}
 /home/scooper/sports2025/afl: cat results/round0[01].txt
@@ -247,7 +247,6 @@ processing results file round01.txt..6/9
 totalGames:  11
 winningTips: 6
 54.55%
-Still alive in Min5
 /home/scooper/sports2025/afl: ./bin/tipscore.pl -n 1 -b
 processing results file round00.txt..0/2
 processing results file round01.txt..6/9
@@ -264,7 +263,6 @@ HAW 1/2   MEL 1/1   NOR 1/1
 POR 1/1   RIC 0/1   STK 1/1
 SYD 0/2   WBD 1/1   WCT 0/1
 
-Still alive in Min5
 /home/scooper/sports2025/afl:
 \end{verbatim}
 
