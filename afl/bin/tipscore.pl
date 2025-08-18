@@ -99,7 +99,7 @@ if ($breakdown) {
 }
 
 if ( $aliveInMin5 ) {
-    print "Still alive in Min5\n";
+#    print "Still alive in Min5\n";
 }
 else {
     print "Lost in Min5\n";
