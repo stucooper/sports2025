@@ -91,7 +91,7 @@ while ( my $betline = <$betfh> ) {
     else {
 	die "Error: resultline $resultline does not contain $teamPicked\n";
     }
-    print "$resultline\n";
+    print "$resultline ";
     print "adjusted $teamPicked $winScore $otherTeam $loseScore\n";
     $correct++ if ($winScore > $loseScore);
     print "$correct/$gamenum\n";
