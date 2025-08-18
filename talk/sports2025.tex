@@ -166,7 +166,7 @@ Pos TEAM  P  W  D  L  B   F    A   +- Pts
 
 \subsection{Code Highlights}
 
-There's two powerful snippets of code worth sharing in this printout:
+There are two highlights of the code worth sharing here:
 
 Get the resultsfiles (in sorted order) and process each one:
 \begin{verbatim}
@@ -191,7 +191,7 @@ my @sorted = sort { $ladder{$b}{points} <=> $ladder{$a}{points}
                       $ladder{$b}{diff} <=> $ladder{$a}{diff}
                                          ||
                                      $a cmp $b
-    } @teams;
+} @teams;
 \end{verbatim}
 
 \section{tipscore.pl}
