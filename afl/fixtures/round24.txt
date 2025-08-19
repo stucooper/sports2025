@@ -1,0 +1,15 @@
+# Thursday 20250821
+ESS v CAR
+# Friday
+COL v MEL
+POR v GCT
+# Saturday
+NOR v ADE
+RIC v GEE
+WCT v SYD
+# Sunday
+GWS v STK
+WBD v FRE
+BRI v HAW
+# Wednesday (Cyclone Alfred)
+GCT v ESS
