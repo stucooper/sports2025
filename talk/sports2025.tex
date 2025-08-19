@@ -112,10 +112,10 @@ an AFL version; with minimum differences but still a few because the
 ladders are calculated differently.
 
 Because of AFL Round 0\footnote{Round Zero has just four games, home
-games for the four Sydney and Brisbane teams, to promote
+games for the Sydney, Brisbane and Gold Coast teams, to promote
 Aussie Rules in NSW and QLD.  AFL fans \emph{hate}
-Round Zero. In 2025 Cyclone Alfred made the AFL call off the
-Brisbane games and there were just two lacklustre Sydney games.
+Round Zero. In 2025 Cyclone Alfred cancelled the
+Queensland games and there were just two dull Sydney games.
 In 2024 the AFL's most hated team, Collingwood, had lost 4 games by
 the end of Round 3.} the AFL is numerically one round behind the NRL;
 in the July/August weekend we had NRL Round 22 and AFL Round 21.
@@ -128,9 +128,9 @@ in the July/August weekend we had NRL Round 22 and AFL Round 21.
 BYES: NEW
 \end{verbatim}
 
-In the NRL scoring system a team with a week off (the ``Bye'') scores
+In the NRL ladder a team with a week off (the ``Bye'') scores
 2 competition points that round, the same as if they had played and
-won. So the NRL results files finish with the team(s) that had the bye
+won. So an NRL results file finishes with the team(s) that had the bye
 that week.
 
 ladder.pl has a StopRound -n argument to show what the ladder was
@@ -166,7 +166,7 @@ Pos TEAM  P  W  D  L  B   F    A   +- Pts
 
 There are two highlights of the code worth sharing here:
 
-Get the resultsfiles (in sorted order) and process each one:
+Get the results files (in sorted order) and process each one:
 \begin{verbatim}
 opendir (my $resultsdirfh, $resultsdir)
     or die "cannot open $resultsdir: $!\n";
@@ -189,7 +189,7 @@ my @sorted = sort { $ladder{$b}{points} <=> $ladder{$a}{points}
                       $ladder{$b}{diff} <=> $ladder{$a}{diff}
                                          ||
                                      $a cmp $b
-} @teams;
+                  } @teams;
 \end{verbatim}
 
 \section{tipscore.pl}
@@ -267,10 +267,12 @@ SYD 0/2   WBD 1/1   WCT 0/1
 \section{ptwscore.pl}
 
 The final program scores a ``Pick the Winners'' bet. Pick the Winners
-is a longstanding bet in NRL under the ``Footy TAB'' banner. Each
-match has the team expected to lose given a points start to try to
-even things up. If that team loses, but wins once the point start is
-applied, they win for the purposes of Pick the Winners.
+is a longstanding NRL bet under the ``Footy TAB'' system. For just
+\$1, anyone over the age of 18 can develop a hard-to-shake-off Sports
+Betting habit. Each match has the team expected to lose given a points
+start to try to even things up. If that team loses, but wins once the
+point start is applied, they win for the purposes of Pick the
+Winners.
 
 I won't show code, I'll just demonstrate the program in action.
 
