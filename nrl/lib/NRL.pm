@@ -2,7 +2,7 @@ package NRL;
 use Exporter 'import';
 @EXPORT = qw(is_valid_team);
 
-# The 17 teams in the 2025 AFL competition, three letter abbreviations
+# The 17 teams in the 2025 NRL competition, three letter abbreviations
 @Teams = qw ( 
     AUK BRI BUL
     CAN CRO GCT
