@@ -62,6 +62,12 @@ sub processTipsFile {
                 print STDERR "team error: unknown team $awayTeam\n";
                 return 0;
 	    }
+	    # Allow GCT or ESS to be tipped twice in Round 24
+	    if ( ( $file eq 'round24.txt') &&
+		 ( ( $homeTeam eq 'GCT') && ( $awayTeam eq 'ESS') )
+		 || ( ( $homeTeam eq 'ESS') && ( $awayTeam eq 'GCT') ) ) {
+		next;
+	    }
 	    if ( ( $teamTipped{$homeTeam} == 1 ) ) {
                 print STDERR "team error: $homeTeam tipped twice??\n";
                 return 0;
