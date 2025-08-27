@@ -46,6 +46,14 @@ sub processFixturesFile {
                 print STDERR "team error: unknown team $awayTeam\n";
                 return 0;
 	    }
+	    # Special Round 24 had final GCT v ESS game which is the
+	    # second game in Round24 for both teams. Allow this
+	    # without the "team already played" error
+	    if ( ( $file eq 'round24.txt') &&
+		 ( $homeTeam eq 'GCT')     &&
+		 ( $awayTeam eq 'ESS') ) {
+		next;
+	    }
 	    if ( ( $teamPlayed{$homeTeam} == 1 ) ) {
                 print STDERR "team error: $homeTeam already played\n";
                 return 0;
