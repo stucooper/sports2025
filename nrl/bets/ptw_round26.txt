@@ -1,5 +1,5 @@
 # not a full pick the winners but the last 7 games
-# but I will have to fake a first game
+# the first line BUL -9.5 is a fake but I would have taken ballpark that
 BUL -9.5
 AUK -4.5
 MEL -2.5
