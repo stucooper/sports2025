@@ -1,0 +1,8 @@
+BRI d MEL
+MAN d AUK
+ROO d SOU
+PEN d STG
+WTI d GCT
+BUL d CRO
+CAN d RED
+PAR d NEW
